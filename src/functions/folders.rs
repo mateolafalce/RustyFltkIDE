@@ -2,48 +2,41 @@ use fltk::{
     prelude::*,
     tree::{
         Tree,
+        TreeSelect,
+        TreeConnectorStyle,
+        TreeReason,
     },
-    enums::{
-        Event,
-        FrameType,
-        Cursor,
-    },
-    button::Button,
-    dialog::{
-        NativeFileChooser,
-        NativeFileChooserType
-    },
-    draw::set_cursor,
+    enums::Color,
+};
+use crate::functions::{
+    root,
+    get_all_paths_in_directory
+};
+use std::{
+    path::Path,
 };
 
-pub fn folders() -> Tree {
-    let mut folders: Tree = Tree::new(0, 20, 150, 558, None);
-    folders.set_root_label("Project folders");
-    folders.add("Item 1");
-    folders.add("Item 2");
-    folders.add("Item 3");
-    folders.add("Item 3/Subitem 1");
-    folders.add("Item 3/Subitem 2");
-    folders.add("Item 3/Subitem 3");
-    let mut add_project_folder: Button = Button::new(2, 579, 146, 20, "🗃️ Add Project");
-    add_project_folder.set_frame(FrameType::UpBox);
-    add_project_folder.set_callback(move |_| {
-        let mut dialog: NativeFileChooser = NativeFileChooser::new(NativeFileChooserType::BrowseFile);
-        dialog.show();
-        println!("{:?}", dialog.filename());
-    });
-    add_project_folder.handle(move |_, event| {
-        match event {
-            Event::Enter => {
-                set_cursor(Cursor::Hand);
-                true
-            },
-            Event::Leave => {
-                set_cursor(Cursor::Arrow);
-                true
-            },
-            _ => false,
-        }
-    });
-    folders
+pub fn folders() -> (Tree, String) {
+    let mut folders: Tree = Tree::new(0, 20, 200, 560, None);
+    let mut raw_path: String = root().unwrap();
+    raw_path.pop();
+    raw_path.pop();
+    let root = Path::new(&raw_path);
+    let mut split_path: Vec<&str> = raw_path.as_str().split('\\').collect();
+    split_path.pop();
+    let prefix: String = split_path.join("/");
+    let paths: Vec<String> = get_all_paths_in_directory(&root, prefix.clone());
+    for path in &paths {
+        folders.add(&path);
+    }
+    let _ = folders.close("RustyFlktIDE", true);
+    let _ = folders.close("RustyFlktIDE/.git", true);
+    let _ = folders.close("RustyFlktIDE/src", true);
+    let _ = folders.close("RustyFlktIDE/target", true);
+    folders.set_callback_reason(TreeReason::Closed);
+    folders.set_show_root(false);
+    folders.set_select_mode(TreeSelect::Multi);
+    folders.set_connector_style(TreeConnectorStyle::Solid);
+    folders.set_connector_color(Color::from_rgb(100,100,0));
+    (folders, prefix)
 }

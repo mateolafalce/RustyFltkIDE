@@ -53,7 +53,11 @@ pub fn commands_for_windows(
             ).expect("Error");
         }
         _ => {
-            print!("");
+            write_terminal(
+                "Command not found. Verify that it exists.",
+                text.clone(),
+                terminal.clone()
+            ).expect("Error");
         }
     }
     Ok(())
