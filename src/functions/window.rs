@@ -11,7 +11,7 @@ pub fn window() -> Window {
     let mut window: Window = Window::new(100, 100, 1000, 600, "Rusty IDE");
     window.set_icon(Some(icon));
     window.set_border(true);
-    window.make_resizable(false);
+    window.make_resizable(true);
     window.set_color(Color::White);
     window
 }

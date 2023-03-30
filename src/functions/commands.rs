@@ -8,7 +8,7 @@ use fltk::{
 use std::{
     thread,
     process::Command,
-    env::consts::OS
+    env::consts::OS,
 };
 use crate::functions::{
     root,
@@ -30,24 +30,24 @@ pub fn run_a_command(
         match split_string[1] {
             "add" => {
                 let output = Command::new("cargo")
-                    .args(&["add", &split_string[2], "--manifest-path", &(root + "\\Cargo.toml")])
+                    .args(&["add", &split_string[2], "--manifest-path", &(root.clone() + "\\Cargo.toml")])
                     .output()
                     .expect("Error");
                 let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
                     write_terminal(
-                        &result,
+                        &(input + "\n" + &result),
                         text.clone(),
                         terminal.clone()
                     ).expect("Error");
             },
             "new" => {
                 let output = Command::new("cargo")
-                    .args(&["new", &(root + "\\" + split_string[2])])
+                    .args(&["new", &(root.clone() + "\\" + split_string[2])])
                     .output()
                     .expect("Error");
                 let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
                     write_terminal(
-                        &result,
+                        &(input + "\n" + &result),
                         text.clone(),
                         terminal.clone()
                     ).expect("Error");
@@ -55,68 +55,66 @@ pub fn run_a_command(
             _ => {
                 match command_input {
                     "cargo build" => {
-                        let output = Command::new("cargo")
-                            .args(&["build", "--manifest-path", &(root + "\\Cargo.toml")])
-                            .output()
-                            .expect("Error");
-                        let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
-                            write_terminal(
-                                &result,
-                                text.clone(),
-                                terminal.clone()
-                            ).expect("Error");
+                        thread::spawn(move || {
+                            let output = Command::new("cargo")
+                                .args(&["build", "--manifest-path", &(root.clone() + "\\Cargo.toml")])
+                                .output()
+                                .expect("Error");
+                            let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
+                                write_terminal(
+                                    &(input + "\n" + &result),
+                                    text.clone(),
+                                    terminal.clone()
+                                ).expect("Error");
+                            }
+                        );
                     },
                     "cargo b" => {
                         let output = Command::new("cargo")
-                            .args(&["build", "--manifest-path", &(root + "\\Cargo.toml")])
+                            .args(&["build", "--manifest-path", &(root.clone() + "\\Cargo.toml")])
                             .output()
                             .expect("Error");
                         let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
                             write_terminal(
-                                &result,
+                                &(input + "\n" + &result),
                                 text.clone(),
                                 terminal.clone()
                             ).expect("Error");
                     },
                     "cargo run" => {
                         let output = Command::new("cargo")
-                            .args(&["run", "--manifest-path", &(root + "\\Cargo.toml")])
+                            .args(&["run", "--manifest-path", &(root.clone() + "\\Cargo.toml")])
                             .output()
                             .expect("Error");
                         let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
                             write_terminal(
-                                &result,
+                                &(input + "\n" + &result),
                                 text.clone(),
                                 terminal.clone()
                             ).expect("Error");
                     },
                     "cargo r" => {
                         let output = Command::new("cargo")
-                            .args(&["run", "--manifest-path", &(root + "\\Cargo.toml")])
+                            .args(&["run", "--manifest-path", &(root.clone() + "\\Cargo.toml")])
                             .arg("run")
                             .output()
                             .expect("Error");
                         let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
                             write_terminal(
-                                &result,
+                                &(input + "\n" + &result),
                                 text.clone(),
                                 terminal.clone()
                             ).expect("Error");
                     },
                     "cargo run --release" => {
-                        write_terminal(
-                            "cargo run --release",
-                            text.clone(),
-                            terminal.clone()
-                        ).expect("Error");
                         thread::spawn(move || {
                             let output = Command::new("cargo")
-                                .args(&["run", "--release", "--manifest-path", &(root + "\\Cargo.toml")])
+                                .args(&["run", "--release", "--manifest-path", &(root.clone() + "\\Cargo.toml")])
                                 .output()
                                 .expect("Error");
                             let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
                                 write_terminal(
-                                    &result,
+                                    &(input + "\n" + &result),
                                     text.clone(),
                                     terminal.clone()
                                 ).expect("Error");
@@ -124,72 +122,72 @@ pub fn run_a_command(
                     },
                     "cargo clean" => {
                         let output = Command::new("cargo")
-                            .args(&["update", "--manifest-path", &(root + "\\Cargo.toml")])
+                            .args(&["update", "--manifest-path", &(root.clone() + "\\Cargo.toml")])
                             .output()
                             .expect("Error");
                         let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));
                             write_terminal(
-                                &result,
+                                &(input + "\n" + &result),
                                 text.clone(),
                                 terminal.clone()
                             ).expect("Error");
                     },
                     "cargo --version" => {
                         let output = Command::new("cargo")
-                            .args(&["--version", &root])
+                            .args(&["--version", &root.clone()])
                             .output()
                             .expect("Error");
                         let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));
                             write_terminal(
-                                &result,
+                                &(input + "\n" + &result),
                                 text.clone(),
                                 terminal.clone()
                             ).expect("Error");
                     },
                     "cargo -V" => {
                         let output = Command::new("cargo")
-                            .args(&["--version", &root])
+                            .args(&["--version", &root.clone()])
                             .output()
                             .expect("Error");
                         let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));
                             write_terminal(
-                                &result,
+                                &(input + "\n" + &result),
                                 text.clone(),
                                 terminal.clone()
                             ).expect("Error");
                     },
                     "cargo --help" => {
                         let output = Command::new("cargo")
-                            .args(&["--help", &root])
+                            .args(&["--help", &root.clone()])
                             .output()
                             .expect("Error");
                         let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));
                             write_terminal(
-                                &result,
+                                &(input + "\n" + &result),
                                 text.clone(),
                                 terminal.clone()
                             ).expect("Error");
                     },
                     "cargo -h" => {
                         let output = Command::new("cargo")
-                            .args(&["--help", &root])
+                            .args(&["--help", &root.clone()])
                             .output()
                             .expect("Error");
                         let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));
                             write_terminal(
-                                &result,
+                                &(input + "\n" + &result),
                                 text.clone(),
                                 terminal.clone()
                             ).expect("Error");
                     },
                     "cargo update" => {
                         let output = Command::new("cargo")
-                            .args(&["update", "--manifest-path", &(root + "\\Cargo.toml")])
+                            .args(&["update", "--manifest-path", &(root.clone() + "\\Cargo.toml")])
                             .output()
                             .expect("Error");
                         let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
                             write_terminal(
-                                &result,
+                                &(input + "\n" + &result),
                                 text.clone(),
                                 terminal.clone()
                             ).expect("Error");

@@ -1,6 +1,7 @@
 //#![windows_subsystem = "windows"]
 mod functions;
 mod constants;
+mod commands;
 use functions::{
     window,
     text_editor,
@@ -9,7 +10,8 @@ use functions::{
     terminal_input,
     horizontal_slider,
     btn_add_folder,
-    render_file
+    render_file,
+    save_file
 };
 use fltk::{
     prelude::*,
@@ -25,7 +27,7 @@ use fltk::{
         TextBuffer
     },
     input::Input,
-    button::Button
+    button::Button,
 };
 
 fn main() {
@@ -46,10 +48,11 @@ fn main() {
         app
     );
     render_file::render_file(
-        folders,
+        folders.clone(),
         text_buffer,
         prefix
     );
+    save_file(folders.clone());
     window.end();
     window.show();
     app.run().unwrap();

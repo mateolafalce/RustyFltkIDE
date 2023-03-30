@@ -3,7 +3,10 @@ use std::{
     fs
 };
 
-pub fn get_all_paths_in_directory(path: &Path, prefix: String) -> Vec<String> {
+pub fn get_all_paths_in_directory(
+    path: &Path,
+    prefix: String
+) -> Vec<String> {
     let mut paths = Vec::new();
     for entry in fs::read_dir(path).unwrap() {
         let entry = entry.unwrap();

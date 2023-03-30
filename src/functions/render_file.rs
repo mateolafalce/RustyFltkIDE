@@ -26,12 +26,11 @@ pub fn render_file(
             for i in items {
                 let path: String = prefix.clone() + "/"+ &item.item_pathname(&i).unwrap();
                 let file_path: &Path = Path::new(&path);
-                let file = text_buffer.load_file(file_path);
-                match file {
+                match text_buffer.load_file(file_path) {
                     Ok(_) => (),
                     Err(e) => alert(center().0 - 100, center().1 - 100, &format!("Error: {}", e)),
                 }
             }
-        }
-    });
+        }}
+    );
 }

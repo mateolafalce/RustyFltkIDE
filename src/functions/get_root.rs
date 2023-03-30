@@ -1,6 +1,9 @@
 use std::{
     fs::File,
-    io::{Error, Read}
+    io::{
+        Error,
+        Read
+    }
 };
 
 pub fn root() -> Result<String, Error> {

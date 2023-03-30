@@ -11,7 +11,9 @@ pub use set_root::*;
 pub use btn_add_folder::*;
 pub use render_file::*;
 pub use get_paths::*;
+pub use save_file::*;
 
+pub mod save_file;
 pub mod get_paths;
 pub mod render_file;
 pub mod btn_add_folder;
