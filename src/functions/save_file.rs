@@ -7,7 +7,6 @@ use fltk::{
     app::event_key,
     tree::Tree
 };
-//use std::path::Path;
 
 pub fn save_file(
     folders: Tree

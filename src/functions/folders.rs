@@ -10,7 +10,6 @@ use fltk::{
 };
 use crate::functions::{
     get_folders_roots,
-    //root,
     get_all_paths_in_directory
 };
 use std::{
@@ -28,10 +27,10 @@ pub fn folders() -> (Tree, String) {
     for path in &paths {
         folders.add(&path);
     }
-    let _ = folders.close("RustyFlktIDE", true);
+    /*let _ = folders.close("RustyFlktIDE", true);
     let _ = folders.close("RustyFlktIDE/.git", true);
     let _ = folders.close("RustyFlktIDE/src", true);
-    let _ = folders.close("RustyFlktIDE/target", true);
+    let _ = folders.close("RustyFlktIDE/target", true);*/
     folders.set_callback_reason(TreeReason::Closed);
     folders.set_show_root(false);
     folders.set_select_mode(TreeSelect::Multi);

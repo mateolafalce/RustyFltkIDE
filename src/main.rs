@@ -11,7 +11,7 @@ use functions::{
     horizontal_slider,
     btn_add_folder,
     render_file,
-    save_file
+    save_file,
 };
 use fltk::{
     prelude::*,
@@ -38,7 +38,10 @@ fn main() {
     let (terminal_output, terminal_buffer): (TextDisplay, TextBuffer) = terminal_output::terminal_output();
     let (folders, prefix): (Tree, String) = folders::folders();
     let terminal_input: Input = terminal_input::terminal_input(terminal_output.clone(), terminal_buffer.clone());
-    let btn_add_folder: Button = btn_add_folder::btn_add_folder(app.clone());
+    let btn_add_folder: Button = btn_add_folder::btn_add_folder(
+        app.clone(),
+        folders.clone()
+    );
     horizontal_slider::horizontal_slider(
         folders.clone(),
         text_editor,
