@@ -1,5 +1,5 @@
 use std::thread;
-use crate::functions::commands::write_terminal;
+use crate::functions::write_terminal;
 use fltk::{
     prelude::*,
     text::{

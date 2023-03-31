@@ -9,7 +9,8 @@ use fltk::{
     enums::Color,
 };
 use crate::functions::{
-    root,
+    get_folders_roots,
+    //root,
     get_all_paths_in_directory
 };
 use std::{
@@ -18,14 +19,12 @@ use std::{
 
 pub fn folders() -> (Tree, String) {
     let mut folders: Tree = Tree::new(0, 20, 200, 560, None);
-    let mut raw_path: String = root().unwrap();
-    raw_path.pop();
-    raw_path.pop();
+    let (raw_path, is_the_repository_clear): (String, bool) = get_folders_roots();
     let root = Path::new(&raw_path);
     let mut split_path: Vec<&str> = raw_path.as_str().split('\\').collect();
     split_path.pop();
     let prefix: String = split_path.join("/");
-    let paths: Vec<String> = get_all_paths_in_directory(&root, prefix.clone());
+    let paths: Vec<String> = get_all_paths_in_directory(&root, prefix.clone(), is_the_repository_clear);
     for path in &paths {
         folders.add(&path);
     }

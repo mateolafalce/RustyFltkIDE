@@ -3,13 +3,8 @@ use fltk::{
     enums::{
         Event,
         Key,
-        Shortcut
     },
-    app::{
-        event,
-        event_key,
-        event_text
-    },
+    app::event_key,
     tree::Tree
 };
 //use std::path::Path;

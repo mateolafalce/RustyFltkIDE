@@ -6,22 +6,23 @@ use crate::functions::{
     set_root
 };
 use fltk::{
-        text::{
+    text::{
         TextDisplay,
         TextBuffer
     },
-    dialog::alert,
+    dialog::alert
 };
 
-pub fn cd_back(
+pub fn cd_to(
     input: String,
     text: TextBuffer,
-    terminal: TextDisplay
+    terminal: TextDisplay,
+    split_raw_input: Vec<String>
 ){
     let root: String = root().unwrap();
     let mut split_string: Vec<&str> = root.split('\\').collect();
     split_string.pop();
-    split_string.pop();
+    split_string.push(&split_raw_input[1]);
     let new_root: String = split_string.join("\\");
     match metadata(new_root.clone()) {
         Ok(_) => {

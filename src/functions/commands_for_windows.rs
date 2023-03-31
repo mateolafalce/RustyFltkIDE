@@ -3,25 +3,22 @@ use fltk::{
         TextDisplay,
         TextBuffer
     },
-    dialog::alert,
 };
 use std::{
     fs::{
         File,
-        metadata
     },
     io::Read
 };
 use crate::functions::{
-    commands::write_terminal,
-    root,
-    set_root,
-    center,
+    write_terminal,
+    root
 };
 use crate::commands::{
     dir,
     cd_back,
-    clear
+    clear,
+    cd_to
 };
 
 pub fn commands_for_windows(
@@ -33,28 +30,10 @@ pub fn commands_for_windows(
     let mut root_data: String = String::new();
     file.read_to_string(&mut root_data).unwrap();
     let raw_input: String = input.to_string();
-    let split_raw_input: Vec<&str> = raw_input.split(' ').collect();
+    let split_raw_input: Vec<String> = raw_input.split(' ').map(|s| s.to_owned()).collect();
     let command_input: &str = raw_input.trim_start_matches(&root().unwrap());
     if split_raw_input[0] == "cd" && split_raw_input[1] != ".." {
-        let root: String = root().unwrap();
-        let mut split_string: Vec<&str> = root.split('\\').collect();
-        split_string.pop();
-        split_string.push(split_raw_input[1]);
-        let new_root: String = split_string.join("\\");
-        match metadata(new_root.clone()) {
-            Ok(_) => {
-                set_root(new_root.clone()).expect("Error");
-                write_terminal(
-                    &(root.clone() + " " + input + "\n"),
-                    text.clone(),
-                    terminal.clone()
-                ).expect("Error");
-                return Ok(());
-            },
-            Err(e) => {
-                alert(center().0 - 100, center().1 - 100, &format!("Error: {}\n", e));
-            }
-        }
+        cd_to::cd_to(input.to_owned(), text.clone(), terminal.clone(), split_raw_input);
     }
     match command_input {
         "dir" => {
@@ -68,7 +47,7 @@ pub fn commands_for_windows(
         }
         _ => {
             write_terminal(
-                "Command not found. Verify that it exists.\n",
+                "\n",
                 text,
                 terminal
             ).expect("Error");

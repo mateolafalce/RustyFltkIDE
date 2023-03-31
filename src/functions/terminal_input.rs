@@ -13,7 +13,7 @@ use fltk::{
     app::event_key
 };
 use crate::{
-    functions::commands::run_a_command,
+    functions::run_a_command,
     constants::{
         CONSOLE_TEXT_SIZE,
         FONT
