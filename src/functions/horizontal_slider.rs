@@ -37,12 +37,12 @@ pub fn horizontal_slider(
     slider.set_value(20.);
     slider.set_callback(move |slider_value| {
         let x1_value: f64 = slider_value.value() * 10.0;
-        let x2_value: f64 = 1000.0 - x1_value;
-        folders.resize(0, 20, x1_value as i32,560);
+        let x2_value: f64 = 1000.0 - x1_value - 10.0;
+        folders.resize(0, 20, x1_value as i32, 560);
         btn_add_folder.resize(0, 580, x1_value as i32, 20);
-        text_editor.resize(x1_value as i32 + 1, 20, x2_value as i32,380);
-        terminal_output.resize(x1_value as i32 + 1, 400, x2_value as i32,170);
-        terminal_input.resize(x1_value as i32 + 1, 570, x2_value as i32,30);
+        text_editor.resize(x1_value as i32 + 1, 20, x2_value as i32, text_editor.height());
+        terminal_output.resize(x1_value as i32 + 1, terminal_output.y(), x2_value as i32, terminal_output.height());
+        terminal_input.resize(x1_value as i32 + 1, 570, x2_value as i32, 30);
         app.redraw();
     });
     slider.handle(move |_, event| {

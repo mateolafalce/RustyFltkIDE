@@ -12,6 +12,7 @@ use functions::{
     btn_add_folder,
     render_file,
     save_file,
+    vertical_slider
 };
 use fltk::{
     prelude::*,
@@ -36,26 +37,48 @@ fn main() {
     let mut window: Window = window::window();
     let (text_editor, text_buffer): (TextEditor, TextBuffer) = text_editor::text_editor();
     let (terminal_output, terminal_buffer): (TextDisplay, TextBuffer) = terminal_output::terminal_output();
-    let (folders, prefix): (Tree, String) = folders::folders();
-    let terminal_input: Input = terminal_input::terminal_input(terminal_output.clone(), terminal_buffer.clone());
+    let (folders, prefix): (Tree, Vec<String>) = folders::folders();
+    let terminal_input: Input = terminal_input::terminal_input(
+        terminal_output.clone(),
+        terminal_buffer.clone()
+    );
     let btn_add_folder: Button = btn_add_folder::btn_add_folder(
         app.clone(),
-        folders.clone()
+        folders.clone(),
+        text_buffer.clone()
     );
     horizontal_slider::horizontal_slider(
         folders.clone(),
-        text_editor,
-        terminal_output,
+        text_editor.clone(),
+        terminal_output.clone(),
         terminal_input,
         btn_add_folder,
+        app.clone()
+    );
+    if prefix.len() > 0 {
+        for i in 0..prefix.len() - 1 {
+            render_file::render_file(
+                folders.clone(),
+                text_buffer.clone(),
+                prefix[i].clone()
+            );
+        }
+    }
+    if prefix.len() == 1 {
+        for i in 0..prefix.len() {
+            render_file::render_file(
+                folders.clone(),
+                text_buffer.clone(),
+                prefix[i].clone()
+            );
+        }
+    }
+    save_file(folders.clone());
+    vertical_slider::vertical_slider(
+        text_editor,
+        terminal_output,
         app
     );
-    render_file::render_file(
-        folders.clone(),
-        text_buffer,
-        prefix
-    );
-    save_file(folders.clone());
     window.end();
     window.show();
     app.run().unwrap();

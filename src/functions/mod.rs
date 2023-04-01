@@ -16,7 +16,9 @@ pub use write_terminal::*;
 pub use run_a_command::*;
 pub use get_folders_roots::*;
 pub use set_folders_roots::*;
+pub use vertical_slider::*;
 
+pub mod vertical_slider;
 pub mod set_folders_roots;
 pub mod get_folders_roots;
 pub mod run_a_command;

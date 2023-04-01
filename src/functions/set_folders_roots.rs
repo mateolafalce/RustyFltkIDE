@@ -20,6 +20,7 @@ pub fn set_folders_roots(
         .unwrap();
     let mut contents = String::new();
     file.read_to_string(&mut contents).unwrap();
+    let root: String = root + "\\-";
     contents.push_str(&root);
     file.write_all(contents.as_bytes()).unwrap();
     Ok(())

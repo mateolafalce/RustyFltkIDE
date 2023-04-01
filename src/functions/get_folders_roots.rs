@@ -5,7 +5,10 @@ use std::{
 use fltk::dialog::alert;
 use crate::functions::center;
 
-pub fn get_folders_roots() -> (String, bool) {
+pub fn get_folders_roots() -> (
+    Vec<String>,
+    bool
+) {
     let mut file: File = File::open("src/constants/folders_roots.rs").unwrap();
     let mut contents: String = String::new();
     let mut is_the_repository_clear: bool = true;
@@ -19,5 +22,6 @@ pub fn get_folders_roots() -> (String, bool) {
             alert(center().0 - 100, center().1 - 100, &format!("Error: {}\n", e));
         }
     }
-    (contents, is_the_repository_clear)
+    let vector: Vec<String> = contents.as_str().split("\\-").map(|s| s.to_string()).collect();
+    (vector, is_the_repository_clear)
 }

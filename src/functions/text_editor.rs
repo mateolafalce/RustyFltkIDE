@@ -14,7 +14,7 @@ use fltk::{
 pub fn text_editor() -> (TextEditor, TextBuffer) {
     let mut buffer: TextBuffer = TextBuffer::default();
     buffer.set_tab_distance(4);
-    let mut text_editor: TextEditor = TextEditor::new(200, 20, 800, 380, "");
+    let mut text_editor: TextEditor = TextEditor::new(200, 20, 790, 380, "");
     text_editor.set_text_font(Font::Courier);
     text_editor.set_text_size(17);
     text_editor.set_scrollbar_size(16);

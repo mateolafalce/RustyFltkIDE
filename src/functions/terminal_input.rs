@@ -25,7 +25,7 @@ pub fn terminal_input(
     terminal_output: TextDisplay,
     terminal_buffer: TextBuffer,
 ) -> Input {
-    let mut terminal_input = Input::new(204, 570, 800, 30, None);
+    let mut terminal_input = Input::new(204, 570, 786, 30, None);
     terminal_input.set_text_font(FONT);
     terminal_input.set_text_size(CONSOLE_TEXT_SIZE);
     terminal_input.set_frame(FrameType::FlatBox);
