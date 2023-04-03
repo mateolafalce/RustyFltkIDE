@@ -14,8 +14,6 @@ pub fn root() -> Result<String, Error> {
             contents.push_str(r"\🎯");
             Ok(contents)
         },
-        Err(_) => {
-            Ok("root".to_string())
-        }
+        Err(e) => Err(e)
     }
 }

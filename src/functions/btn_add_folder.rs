@@ -1,6 +1,7 @@
 use fltk::{
     prelude::*,
     button::Button,
+    window::Window,
     enums::{
         Cursor,
         Event,
@@ -8,7 +9,8 @@ use fltk::{
     },
     dialog::{
         NativeFileChooser,
-        NativeFileChooserType
+        NativeFileChooserType,
+        alert
     },
     draw::set_cursor,
     app::App,
@@ -19,63 +21,75 @@ use crate::functions::{
     set_folders_roots::set_folders_roots,
     get_paths::get_all_paths_in_directory,
     get_folders_roots::get_folders_roots,
-    render_file::render_file
+    render_file::render_file,
+    center
 };
 use std::path::Path;
 
 pub fn btn_add_folder(
     app: App,
     folders: Tree,
-    text_buffer: TextBuffer
+    text_buffer: TextBuffer,
+    options_windows: Window
 ) -> Button {
+    let mut options_windows: Window = options_windows.clone();
     let mut folders: Tree = folders.clone();
-    let mut add_project_folder: Button = Button::new(0, 10, 100, 20, "🗃️ Add Project");
+    let mut add_project_folder: Button = Button::new(25, 10, 250, 20, "🗃️ Add Project");
     add_project_folder.set_frame(FrameType::UpBox);
     add_project_folder.set_callback(move |_| {
-        let mut dialog: NativeFileChooser = NativeFileChooser::new(NativeFileChooserType::BrowseDir);
-        dialog.show();
-        let folder_input: String = dialog.filename().display().to_string();
-        if folder_input != "" {
-            set_folders_roots(folder_input).unwrap();
-            let mut prefix: Vec<String> = vec![];
-            let mut close_tree: Vec<String> = vec![];
-            let (raw_path, is_the_repository_clear): (Vec<String>, bool) = get_folders_roots();
-            for i in 0..raw_path.len() - 1 {
-                let mut split_path: Vec<&str> = raw_path[i].as_str().split('\\').collect();
-                close_tree.push(split_path.last().unwrap().to_string());
-                split_path.pop();
-                prefix.push(split_path.join("/"));
-                let paths: Vec<String> = get_all_paths_in_directory(
-                    &Path::new(&raw_path[i]),
-                    prefix[i].clone(),
-                    is_the_repository_clear
-                );
-                for path in &paths {
-                    folders.add(&path);
+            let mut dialog: NativeFileChooser = NativeFileChooser::new(NativeFileChooserType::BrowseDir);
+            dialog.show();
+            let folder_input: String = dialog.filename().display().to_string();
+            if folder_input != "" {
+                options_windows.set_label("Loading ...");
+                match set_folders_roots(folder_input) {
+                    Ok(_) => {
+                        let mut prefix: Vec<String> = vec![];
+                        let mut close_tree: Vec<String> = vec![];
+                        let (raw_path, is_the_repository_clear): (Vec<String>, bool) = get_folders_roots();
+                        for i in 0..raw_path.len() - 1 {
+                            let mut split_path: Vec<&str> = raw_path[i].as_str().split('\\').collect();
+                            close_tree.push(split_path.last().unwrap().to_string());
+                            split_path.pop();
+                            prefix.push(split_path.join("/"));
+                            let paths: Vec<String> = get_all_paths_in_directory(
+                                &Path::new(&raw_path[i]),
+                                prefix[i].clone(),
+                                is_the_repository_clear
+                            );
+                            for path in &paths {
+                                folders.add(&path);
+                            }
+                        }
+                        for i in 0..raw_path.len() - 1 {
+                            let _ = folders.close(&close_tree[i], true);
+                        }
+                        if prefix.len() == 1 {
+                            for i in 0..prefix.len() {
+                                render_file(
+                                    folders.clone(),
+                                    text_buffer.clone(),
+                                    prefix[i].clone()
+                                );
+                            }
+                        } else if prefix.len() > 1 {
+                            for i in 0..prefix.len() - 1 {
+                                render_file(
+                                    folders.clone(),
+                                    text_buffer.clone(),
+                                    prefix[i].clone()
+                                );
+                            }
+                        }
+                        app.redraw();
+                        options_windows.hide();
+                    }
+                    Err(e) => {
+                        options_windows.set_label("Options");
+                        alert(center().0 - 100, center().1 - 100, &format!("Error: {}\n", e));
+                    }
                 }
             }
-            for i in 0..raw_path.len() - 1 {
-                let _ = folders.close(&close_tree[i], true);
-            }
-            if prefix.len() == 1 {
-                for i in 0..prefix.len() {
-                    render_file(
-                        folders.clone(),
-                        text_buffer.clone(),
-                        prefix[i].clone()
-                    );
-                }
-            } else if prefix.len() > 1 {
-                for i in 0..prefix.len() - 1 {
-                    render_file(
-                        folders.clone(),
-                        text_buffer.clone(),
-                        prefix[i].clone()
-                    );
-                }
-            }
-            app.redraw();
-        }
     });
     add_project_folder.handle(move |_, event| {
         match event {

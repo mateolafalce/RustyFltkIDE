@@ -9,7 +9,6 @@ use functions::{
     terminal_output,
     terminal_input,
     horizontal_slider,
-    btn_add_folder,
     render_file,
     save_file,
     vertical_slider,
@@ -29,10 +28,8 @@ use fltk::{
         TextBuffer
     },
     input::Input,
-    button::Button,
 };
-use fltk::draw::set_cursor;
-use fltk::enums::{Cursor, Event};
+use fltk::enums::{Event};
 use fltk::app::{event_mouse_button, MouseButton};
 
 fn main() {
@@ -46,14 +43,13 @@ fn main() {
         terminal_output.clone(),
         terminal_buffer.clone()
     );
-    /*horizontal_slider::horizontal_slider(
+    horizontal_slider::horizontal_slider(
         folders.clone(),
         text_editor.clone(),
         terminal_output.clone(),
         terminal_input,
-        btn_add_folder,
         app.clone()
-    );*/
+    );
     if prefix.len() > 0 {
         for i in 0..prefix.len() - 1 {
             render_file::render_file(

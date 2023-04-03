@@ -7,7 +7,6 @@ use fltk::{
         TextDisplay
     },
     input::Input,
-    button::Button,
     app::App,
     draw::set_cursor,
     enums::{
@@ -21,14 +20,12 @@ pub fn horizontal_slider(
     text_editor: TextEditor,
     terminal_output: TextDisplay,
     terminal_input: Input,
-    btn_add_folder: Button,
     app: App
 ) -> HorNiceSlider {
     let mut folders: Tree = folders.clone();
     let mut text_editor: TextEditor = text_editor.clone();
     let mut terminal_output: TextDisplay = terminal_output.clone();
     let mut terminal_input: Input = terminal_input.clone();
-    let mut btn_add_folder: Button = btn_add_folder.clone();
     let app: App = app.clone();
     let mut slider: HorNiceSlider = HorNiceSlider::new(0, 10, 1000, 10, None);
     slider.set_minimum(0.);
@@ -39,7 +36,6 @@ pub fn horizontal_slider(
         let x1_value: f64 = slider_value.value() * 10.0;
         let x2_value: f64 = 1000.0 - x1_value - 10.0;
         folders.resize(0, 20, x1_value as i32, 560);
-        btn_add_folder.resize(0, 580, x1_value as i32, 20);
         text_editor.resize(x1_value as i32 + 1, 20, x2_value as i32, text_editor.height());
         terminal_output.resize(x1_value as i32 + 1, terminal_output.y(), x2_value as i32, terminal_output.height());
         terminal_input.resize(x1_value as i32 + 1, 570, x2_value as i32, 30);

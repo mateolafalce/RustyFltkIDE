@@ -9,7 +9,9 @@ pub use cargo_clean::*;
 pub use cargo_version::*;
 pub use cargo_help::*;
 pub use cargo_update::*;
+pub use cargo_build_release::*;
 
+pub mod cargo_build_release;
 pub mod cargo_update;
 pub mod cargo_help;
 pub mod cargo_version;

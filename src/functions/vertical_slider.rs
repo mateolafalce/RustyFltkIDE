@@ -29,8 +29,18 @@ pub fn vertical_slider(
             y1_value = 550.0;
         }
         let y2_value: f64 = 580.0 - y1_value;
-        text_editor.resize(text_editor.x(), 20, text_editor.width(), y1_value as i32);
-        terminal_output.resize(terminal_output.x(), (y1_value + 20.0) as i32, text_editor.width(), y2_value as i32);
+        text_editor.resize(
+            text_editor.x(),
+            20,
+            text_editor.width(),
+            y1_value as i32
+        );
+        terminal_output.resize(
+            terminal_output.x(),
+            (y1_value + 20.) as i32,
+            text_editor.width(),
+            (y2_value - 22.)as i32
+        );
         app.redraw();
     });
     vertical_slider.handle(move |_, event| {

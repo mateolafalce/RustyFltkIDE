@@ -8,11 +8,6 @@ use fltk::{
     },
     enums::{
         Color,
-        Event,
-    },
-    app::{
-        event_mouse_button,
-        MouseButton
     },
 };
 use crate::functions::{

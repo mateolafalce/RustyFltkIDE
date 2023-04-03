@@ -6,6 +6,7 @@ use crate::commands::{
     cargo_version::cargo_version,
     cargo_help::cargo_help,
     cargo_update::cargo_update,
+    cargo_build_release::cargo_build_release,
 };
 use fltk::text::{
     TextDisplay,
@@ -25,6 +26,9 @@ pub fn commands_for_cargo(
         },
         "cargo b" => {
             cargo_build(input,text.clone(),terminal.clone());
+        },
+        "cargo build --release" => {
+            cargo_build_release(input,text.clone(),terminal.clone());
         },
         "cargo run" => {
             cargo_run(input,text.clone(),terminal.clone());
