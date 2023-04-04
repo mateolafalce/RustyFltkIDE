@@ -28,7 +28,13 @@ pub fn render_file(
                 let file_path: &Path = Path::new(&path);
                 match text_buffer.load_file(file_path) {
                     Ok(_) => (),
-                    Err(e) => alert(center().0 - 100, center().1 - 100, &format!("Error: {}", e)),
+                    Err(e) => {
+                        alert(center().0 - 100, center().1 - 100, &format!("Error: {}", e));
+                        let _ = item.deselect(
+                            &path,
+                            true
+                        );
+                    }
                 }
             }
         }}

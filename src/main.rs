@@ -12,7 +12,7 @@ use functions::{
     render_file,
     save_file,
     vertical_slider,
-    options_windows
+    options_windows,
 };
 use fltk::{
     prelude::*,
