@@ -35,7 +35,7 @@ pub fn horizontal_slider(
     slider.set_callback(move |slider_value| {
         let x1_value: f64 = slider_value.value() * 10.0;
         let x2_value: f64 = 1000.0 - x1_value - 10.0;
-        folders.resize(0, 20, x1_value as i32, 560);
+        folders.resize(0, 20, x1_value as i32, 580);
         text_editor.resize(x1_value as i32 + 1, 20, x2_value as i32, text_editor.height());
         terminal_output.resize(x1_value as i32 + 1, terminal_output.y(), x2_value as i32, terminal_output.height());
         terminal_input.resize(x1_value as i32 + 1, 570, x2_value as i32, 30);
