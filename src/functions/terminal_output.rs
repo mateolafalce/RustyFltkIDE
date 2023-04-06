@@ -19,7 +19,7 @@ use crate::{
 
 pub fn terminal_output() -> (TextDisplay, TextBuffer) {
     let terminal_buffer: TextBuffer = TextBuffer::default();
-    let mut terminal: TextDisplay = TextDisplay::new(200, 400, 890, 170, None);
+    let mut terminal: TextDisplay = TextDisplay::new(200, 400, 770, 170, None);
     let terminal_text: String = format!("Operating system: {}\n🦀 Rusty IDE console 💻\n\n", OS);
     terminal.set_buffer(Some(terminal_buffer.clone()));
     terminal.buffer().unwrap().append(&terminal_text);

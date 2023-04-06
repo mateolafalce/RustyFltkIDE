@@ -38,18 +38,7 @@ pub fn btn_delete_folder(
     delete_folder.set_frame(FrameType::UpBox);
     delete_folder.set_callback(move |_| {
         let (raw_path, is_the_repository_clear): (Vec<String>, bool) = get_folders_roots();
-        
         options_windows.set_label("Loading ...");
-        match set_folders_roots(folder_input) {
-                Ok(_) => {
-                    app.redraw();
-                    options_windows.hide();
-                }
-                Err(e) => {
-                    options_windows.set_label("Options");
-                    alert(center().0 - 100, center().1 - 100, &format!("Error: {}\n", e));
-                }
-            }
     });
     delete_folder.handle(move |_, event| {
         match event {
