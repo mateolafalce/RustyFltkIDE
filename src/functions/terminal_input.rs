@@ -36,7 +36,7 @@ pub fn terminal_input(
         match event {
             Event::KeyUp => {
                 if terminal_input.value().len() < root().len() {
-                    terminal_input.set_value(&(terminal_input.value() + "🎯"));
+                    terminal_input.set_value(&(terminal_input.value()));
                 }
                 true
             },
