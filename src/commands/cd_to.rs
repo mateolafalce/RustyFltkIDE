@@ -19,7 +19,7 @@ pub fn cd_to(
     terminal: TextDisplay,
     split_raw_input: Vec<String>
 ){
-    let root: String = root().unwrap();
+    let root: String = root();
     let mut split_string: Vec<&str> = root.split('\\').collect();
     split_string.pop();
     split_string.push(&split_raw_input[1]);

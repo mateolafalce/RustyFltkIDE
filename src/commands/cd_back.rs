@@ -18,7 +18,7 @@ pub fn cd_back(
     text: TextBuffer,
     terminal: TextDisplay
 ){
-    let root: String = root().unwrap();
+    let root: String = root();
     let mut split_string: Vec<&str> = root.split('\\').collect();
     split_string.pop();
     split_string.pop();

@@ -31,7 +31,7 @@ pub fn commands_for_windows(
     file.read_to_string(&mut root_data).unwrap();
     let raw_input: String = input.to_string();
     let split_raw_input: Vec<String> = raw_input.split(' ').map(|s| s.to_owned()).collect();
-    let command_input: &str = raw_input.trim_start_matches(&root().unwrap());
+    let command_input: &str = raw_input.trim_start_matches(&root());
     if split_raw_input[0] == "cd" && split_raw_input[1] != ".." {
         cd_to::cd_to(input.to_owned(), text.clone(), terminal.clone(), split_raw_input);
     }

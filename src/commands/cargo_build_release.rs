@@ -18,7 +18,7 @@ pub fn cargo_build_release(
 ){
     thread::spawn(move || {
         let output = Command::new("cargo")
-            .args(&["build", "--release", "--manifest-path", &((root.clone())().unwrap() + "\\Cargo.toml")])
+            .args(&["build", "--release", "--manifest-path", &((root.clone())() + "\\Cargo.toml")])
             .output()
             .expect("Error");
         let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));

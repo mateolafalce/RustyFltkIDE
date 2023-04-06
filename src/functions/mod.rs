@@ -18,9 +18,9 @@ pub use set_folders_roots::*;
 pub use vertical_slider::*;
 pub use commands_for_cargo::*;
 pub use options_windows::*;
-pub use btn_delete_folder::*;
+//pub use btn_delete_folder::*;
 
-pub mod btn_delete_folder;
+//pub mod btn_delete_folder;
 pub mod options_windows;
 pub mod commands_for_cargo;
 pub mod vertical_slider;

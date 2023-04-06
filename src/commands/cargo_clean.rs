@@ -18,7 +18,7 @@ pub fn cargo_clean(
 ){
     thread::spawn(move || {
         let output = Command::new("cargo")
-            .args(&["update", "--manifest-path", &((root.clone())().unwrap() + "\\Cargo.toml")])
+            .args(&["update", "--manifest-path", &((root.clone())() + "\\Cargo.toml")])
             .output()
             .expect("Error");
         let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));

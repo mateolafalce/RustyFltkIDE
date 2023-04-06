@@ -18,7 +18,7 @@ pub fn cargo_version(
 ) {
     thread::spawn(move || {
         let output = Command::new("cargo")
-            .args(&["--version", &(root.clone())().unwrap()])
+            .args(&["--version", &(root.clone())()])
             .output()
             .expect("Error");
         let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));

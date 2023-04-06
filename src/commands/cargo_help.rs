@@ -18,7 +18,7 @@ pub fn cargo_help(
 ) {
     thread::spawn(move || {
         let output = Command::new("cargo")
-            .args(&["--help", &(root.clone())().unwrap()])
+            .args(&["--help", &(root.clone())()])
             .output()
             .expect("Error");
         let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));

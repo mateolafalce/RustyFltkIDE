@@ -14,7 +14,7 @@ pub fn dir(
     text: TextBuffer,
     terminal: TextDisplay
 ) {
-    let root: String = root().unwrap();
+    let root: String = root();
     let output = Command::new("cmd")
         .args(&["/C", "dir", &root_data])
         .output()
