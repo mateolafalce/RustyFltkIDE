@@ -16,7 +16,7 @@ pub fn save_file(
         match event {
             Event::Shortcut => {
                 if event_key() == Key::AltL {
-                    println!("foo");
+                    //TODO
                 }
             true
         }
