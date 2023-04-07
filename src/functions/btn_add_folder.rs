@@ -91,6 +91,7 @@ pub fn btn_add_folder(
                 }
             }
     });
+    
     add_project_folder.handle(move |_, event| {
         match event {
             Event::Enter => {
