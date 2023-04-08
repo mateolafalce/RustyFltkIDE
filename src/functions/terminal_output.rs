@@ -25,6 +25,7 @@ pub fn terminal_output() -> (TextDisplay, TextBuffer) {
     terminal.buffer().unwrap().append(&terminal_text);
     terminal.set_scrollbar_align(Align::Bottom | Align::Right);
     terminal.set_text_font(FONT);
+    terminal.set_text_size(16);
     terminal.set_text_size(CONSOLE_TEXT_SIZE);
     terminal.set_scrollbar_size(18);
     terminal.set_frame(FrameType::NoBox);
