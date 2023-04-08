@@ -7,9 +7,11 @@ use fltk::{
     text::{
         TextEditor,
         TextBuffer,
-        Cursor
+        Cursor,
+        StyleTableEntry
     }
 };
+
 
 pub fn text_editor() -> (TextEditor, TextBuffer) {
     let mut buffer: TextBuffer = TextBuffer::default();
