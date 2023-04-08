@@ -15,7 +15,10 @@ use fltk::{
     draw::set_cursor,
     app::App,
     tree::Tree,
-    text::TextBuffer
+    text::{
+        TextBuffer,
+        TextEditor
+    }
 };
 use crate::functions::{
     set_folders_roots::set_folders_roots,
@@ -30,6 +33,7 @@ pub fn btn_add_folder(
     app: App,
     folders: Tree,
     text_buffer: TextBuffer,
+    text_editor: TextEditor,
     options_windows: Window
 ) -> Button {
     let mut options_windows: Window = options_windows.clone();
@@ -69,6 +73,7 @@ pub fn btn_add_folder(
                                 render_file(
                                     folders.clone(),
                                     text_buffer.clone(),
+                                    text_editor.clone(),
                                     prefix[i].clone()
                                 );
                             }
@@ -77,6 +82,7 @@ pub fn btn_add_folder(
                                 render_file(
                                     folders.clone(),
                                     text_buffer.clone(),
+                                    text_editor.clone(),
                                     prefix[i].clone()
                                 );
                             }
@@ -91,7 +97,7 @@ pub fn btn_add_folder(
                 }
             }
     });
-    
+
     add_project_folder.handle(move |_, event| {
         match event {
             Event::Enter => {

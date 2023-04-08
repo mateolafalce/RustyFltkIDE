@@ -55,6 +55,7 @@ fn main() {
             render_file::render_file(
                 folders.clone(),
                 text_buffer.clone(),
+                text_editor.clone(),
                 prefix[i].clone()
             );
         }
@@ -64,13 +65,14 @@ fn main() {
             render_file::render_file(
                 folders.clone(),
                 text_buffer.clone(),
+                text_editor.clone(),
                 prefix[i].clone()
             );
         }
     }
     save_file(folders.clone());
     vertical_slider::vertical_slider(
-        text_editor,
+        text_editor.clone(),
         terminal_output,
         app
     );
@@ -81,7 +83,8 @@ fn main() {
                     options_windows::options_windows(
                         app.clone(),
                         folders,
-                        text_buffer.clone()
+                        text_buffer.clone(),
+                        text_editor.clone()
                     );
                 }
                 true
