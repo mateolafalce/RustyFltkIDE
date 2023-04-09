@@ -3,11 +3,11 @@ use fltk::text::{
     TextBuffer
 };
 use std::env::consts::OS;
-use crate::functions::{
-    root,
-    commands_for_windows::commands_for_windows,
-};
-
+use crate::functions::root;
+#[path="./specific_commands/commands_for_windows.rs"]
+mod commands_for_windows;
+#[path="./specific_commands/commands_for_cargo.rs"]
+mod commands_for_cargo;
 
 pub fn run_a_command(
     input: String,
@@ -20,13 +20,20 @@ pub fn run_a_command(
     root.pop();
     root.pop();
     if OS == "windows" {
-            commands_for_windows(
+            commands_for_windows::commands_for_windows(
                 command_input,
                 text.clone(),
                 terminal.clone()
-            ).expect("Windows console error");
+            ).unwrap();
         } else {
-            print!("");
-    }
+            print!("todo");
+            //TODO
+    };
+    commands_for_cargo::commands_for_cargo(
+        input,
+        text.clone(),
+        terminal.clone(),
+        command_input,
+    );
     Ok(())
 }
