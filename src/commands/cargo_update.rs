@@ -1,6 +1,5 @@
 use crate::functions::{
     write_terminal,
-    root
 };
 use fltk::text::{
     TextDisplay,
@@ -14,11 +13,12 @@ use std::{
 pub fn cargo_update(
     input: String,
     text: TextBuffer,
-    terminal: TextDisplay
+    terminal: TextDisplay,
+    root: String
 ) {
     thread::spawn(move || {
         let output = Command::new("cargo")
-            .args(&["update", "--manifest-path", &((root.clone())() + "\\Cargo.toml")])
+            .args(&["update", "--manifest-path", &((root + "\\Cargo.toml"))])
             .output()
             .expect("Error");
         let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
