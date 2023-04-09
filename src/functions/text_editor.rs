@@ -8,7 +8,6 @@ use fltk::{
         TextEditor,
         TextBuffer,
         Cursor,
-        StyleTableEntry
     }
 };
 

@@ -7,7 +7,6 @@ use fltk::{
     text::{
         TextEditor,
         TextBuffer,
-        Cursor,
         StyleTableEntry
     }
 };
@@ -19,11 +18,12 @@ const STYLES: &[StyleTableEntry] = &[
         size: 16,
 }];
 
-fn find_colon(text: &str) -> Option<usize> {
-    if let Some(pattern) = text.find("::") {
+fn find_colon(text: &str) -> usize {
+    /*if let Some(pattern) = text.find("::") {
         return text[..pattern].find(":");
     }
-    None
+    None*/
+    0
 }
 
 pub fn text_style(
@@ -31,6 +31,6 @@ pub fn text_style(
     text: &str
 ) {
     let mut sbuf: TextBuffer = TextBuffer::default();
-    sbuf.set_text(&"A".repeat(find_colon(text).unwrap()));
+    sbuf.set_text(&"A".repeat(find_colon(text)));
     text_editor.set_highlight_data(sbuf, STYLES.to_vec());
 }
