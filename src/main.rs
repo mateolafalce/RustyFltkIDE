@@ -8,12 +8,14 @@ use functions::{
     folders,
     terminal_output,
     terminal_input,
-    horizontal_slider,
     render_file,
     save_file,
-    vertical_slider,
     options_windows,
 };
+#[path="./functions/sliders/horizontal_slider.rs"]
+mod horizontal_slider;
+#[path="./functions/sliders/vertical_slider.rs"]
+mod vertical_slider;
 use fltk::{
     prelude::*,
     window::Window,
