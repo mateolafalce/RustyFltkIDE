@@ -57,7 +57,6 @@ fn main() {
             render_file::render_file(
                 folders.clone(),
                 text_buffer.clone(),
-                text_editor.clone(),
                 prefix[i].clone()
             );
         }
@@ -67,7 +66,6 @@ fn main() {
             render_file::render_file(
                 folders.clone(),
                 text_buffer.clone(),
-                text_editor.clone(),
                 prefix[i].clone()
             );
         }
@@ -86,7 +84,6 @@ fn main() {
                         app.clone(),
                         folders,
                         text_buffer.clone(),
-                        text_editor.clone()
                     );
                 }
                 true

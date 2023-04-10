@@ -17,7 +17,6 @@ use fltk::{
     tree::Tree,
     text::{
         TextBuffer,
-        TextEditor
     }
 };
 use crate::functions::{
@@ -33,12 +32,11 @@ pub fn btn_add_folder(
     app: App,
     folders: Tree,
     text_buffer: TextBuffer,
-    text_editor: TextEditor,
     options_windows: Window
 ) -> Button {
     let mut options_windows: Window = options_windows.clone();
     let mut folders: Tree = folders.clone();
-    let mut add_project_folder: Button = Button::new(25, 10, 250, 20, "🗃️ Add Project");
+    let mut add_project_folder: Button = Button::new(25, 10, 250, 20, "@fileopen  Add Project");
     add_project_folder.set_frame(FrameType::UpBox);
     add_project_folder.set_callback(move |_| {
             let mut dialog: NativeFileChooser = NativeFileChooser::new(NativeFileChooserType::BrowseDir);
@@ -73,7 +71,6 @@ pub fn btn_add_folder(
                                 render_file(
                                     folders.clone(),
                                     text_buffer.clone(),
-                                    text_editor.clone(),
                                     prefix[i].clone()
                                 );
                             }
@@ -82,7 +79,6 @@ pub fn btn_add_folder(
                                 render_file(
                                     folders.clone(),
                                     text_buffer.clone(),
-                                    text_editor.clone(),
                                     prefix[i].clone()
                                 );
                             }

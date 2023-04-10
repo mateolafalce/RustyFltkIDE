@@ -9,7 +9,6 @@ use fltk::{
     },
     text::{
         TextBuffer,
-        TextEditor
     },
     tree::Tree,
     image::PngImage,
@@ -23,7 +22,6 @@ pub fn options_windows(
     app: App,
     folders: &mut Tree,
     text_buffer: TextBuffer,
-    text_editor: TextEditor,
 ) -> Window {
     let icon: PngImage = PngImage::load(&Path::new("src/options.png")).unwrap();
     let mut options_windows: Window = Window::new(
@@ -40,7 +38,6 @@ pub fn options_windows(
         app.clone(),
         folders.clone(),
         text_buffer.clone(),
-        text_editor.clone(),
         options_windows.clone(),
     );
     options_windows.end();

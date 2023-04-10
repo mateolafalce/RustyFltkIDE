@@ -13,9 +13,7 @@ pub use run_a_command::*;
 pub use get_folders_roots::*;
 pub use set_folders_roots::*;
 pub use options_windows::*;
-pub use text_style::*;
 
-pub mod text_style;
 pub mod options_windows;
 pub mod set_folders_roots;
 pub mod get_folders_roots;
