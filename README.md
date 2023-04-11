@@ -2,8 +2,6 @@
 
   ![rusty](src/rusty.ico)
 
-  ---
-
   <h2>⚠️Still in development⚠️</h2>
   
   <br>
