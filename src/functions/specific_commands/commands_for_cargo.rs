@@ -8,11 +8,12 @@ use crate::commands::{
     cargo_update::cargo_update,
     cargo_build_release::cargo_build_release,
 };
-use crate::functions::root;
 use fltk::text::{
     TextDisplay,
     TextBuffer
 };
+#[path="../root/get_root.rs"]
+mod root;
 
 #[allow(dead_code)]
 pub fn commands_for_cargo(
@@ -21,7 +22,7 @@ pub fn commands_for_cargo(
     terminal: TextDisplay,
     command_input: &str
 ) {
-    let mut root = root();
+    let mut root = root::root();
     root.pop();
     match command_input {
         "cargo build" => {
@@ -46,16 +47,16 @@ pub fn commands_for_cargo(
             cargo_clean(input,text.clone(),terminal.clone(), root.clone());
         },
         "cargo --version" => {
-            cargo_version(input,text.clone(),terminal.clone());
+            cargo_version(input,text.clone(),terminal.clone(), root.clone());
         },
         "cargo -V" => {
-            cargo_version(input,text.clone(),terminal.clone());
+            cargo_version(input,text.clone(),terminal.clone(), root.clone());
         },
         "cargo --help" => {
-            cargo_help(input,text.clone(),terminal.clone());
+            cargo_help(input,text.clone(),terminal.clone(), root.clone());
         },
         "cargo -h" => {
-            cargo_help(input,text.clone(),terminal.clone());
+            cargo_help(input,text.clone(),terminal.clone(), root.clone());
         },
         "cargo update" => {
             cargo_update(input,text.clone(),terminal.clone(), root.clone());

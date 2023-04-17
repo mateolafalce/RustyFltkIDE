@@ -1,7 +1,4 @@
-use crate::functions::{
-    write_terminal,
-    root
-};
+use crate::functions::write_terminal;
 use fltk::text::{
     TextDisplay,
     TextBuffer
@@ -14,11 +11,12 @@ use std::{
 pub fn cargo_version(
     input: String,
     text: TextBuffer,
-    terminal: TextDisplay
+    terminal: TextDisplay,
+    root: String
 ) {
     thread::spawn(move || {
         let output = Command::new("cargo")
-            .args(&["--version", &(root.clone())()])
+            .args(&["--version", &root])
             .output()
             .expect("Error");
         let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));

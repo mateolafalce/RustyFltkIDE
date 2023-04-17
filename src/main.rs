@@ -21,7 +21,9 @@ use fltk::{
     window::Window,
     app::{
         App,
-        Scheme
+        Scheme,
+        event_mouse_button,
+        MouseButton
     },
     tree::Tree,
     text::{
@@ -30,9 +32,8 @@ use fltk::{
         TextBuffer
     },
     input::Input,
+    enums::Event
 };
-use fltk::enums::{Event};
-use fltk::app::{event_mouse_button, MouseButton};
 
 fn main() {
     let mut app: App = App::default();

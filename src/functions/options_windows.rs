@@ -15,6 +15,8 @@ use fltk::{
 };
 #[path="./btn/btn_add_folder.rs"]
 mod btn_add_folder;
+#[path="./btn/btn_delete_folder.rs"]
+mod btn_delete_folder;
 
 use std::path::Path;
 
@@ -35,6 +37,12 @@ pub fn options_windows(
     options_windows.set_border(true);
     options_windows.set_color(Color::White);
     btn_add_folder::btn_add_folder(
+        app.clone(),
+        folders.clone(),
+        text_buffer.clone(),
+        options_windows.clone(),
+    );
+    btn_delete_folder::btn_delete_folder(
         app.clone(),
         folders.clone(),
         text_buffer.clone(),

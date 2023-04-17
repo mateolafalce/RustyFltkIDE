@@ -19,7 +19,8 @@ use crate::{
         FONT
     }
 };
-use crate::functions::root;
+#[path="./root/get_root.rs"]
+mod root;
 
 pub fn terminal_input(
     terminal_output: TextDisplay,
@@ -29,13 +30,13 @@ pub fn terminal_input(
     terminal_input.set_text_font(FONT);
     terminal_input.set_text_size(CONSOLE_TEXT_SIZE);
     terminal_input.set_frame(FrameType::FlatBox);
-    terminal_input.set_value(&root());
+    terminal_input.set_value(&root::root());
     terminal_input.set_readonly(true);
     let _terminal_input = terminal_output.clone();
     terminal_input.handle(move |terminal_input, event| {
         match event {
             Event::KeyUp => {
-                if terminal_input.value().len() < root().len() {
+                if terminal_input.value().len() < root::root().len() {
                     terminal_input.set_value(&(terminal_input.value()));
                 }
                 true
@@ -51,7 +52,7 @@ pub fn terminal_input(
                         terminal_buffer.clone(),
                         _terminal_input.clone()
                     ).expect("Error");
-                    terminal_input.set_value(&root());
+                    terminal_input.set_value(&root::root());
                 }
                 true
             },
