@@ -61,6 +61,6 @@ pub fn commands_for_cargo(
         "cargo update" => {
             cargo_update(input,text.clone(),terminal.clone(), root.clone());
         },
-        _ => unreachable!(),
+        _ => (),
 }
 }

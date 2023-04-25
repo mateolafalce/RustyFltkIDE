@@ -30,6 +30,7 @@ mod set_folders_roots;
 #[path="../root/get_folders_roots.rs"]
 mod get_folders_roots;
 
+//TODO: MANAGE ROOTS FOLDERS
 
 use std::path::Path;
 
@@ -44,6 +45,7 @@ pub fn btn_add_folder(
     let mut add_project_folder: Button = Button::new(25, 10, 250, 20, "@fileopen  Add Project");
     add_project_folder.set_frame(FrameType::UpBox);
     add_project_folder.set_callback(move |_| {
+            options_windows.hide();
             let mut dialog: NativeFileChooser = NativeFileChooser::new(NativeFileChooserType::BrowseDir);
             dialog.show();
             let folder_input: String = dialog.filename().display().to_string();
@@ -89,7 +91,6 @@ pub fn btn_add_folder(
                             }
                         }
                         app.redraw();
-                        options_windows.hide();
                     }
                     Err(e) => {
                         options_windows.set_label("Options");

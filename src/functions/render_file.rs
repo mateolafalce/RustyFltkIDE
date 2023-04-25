@@ -31,15 +31,18 @@ pub fn render_file(
                         () // If loading the file was successful, do nothing
                     },
                     Err(e) => {
-                        alert(center().0 - 100, center().1 - 100, &format!("Error: {}", e));  // Display an error message dialog at the center of the screen
+                        alert(
+                            center().0 - 100,
+                            center().1 - 100,
+                            &format!("Error: {}", e)
+                        );  // Display an error message dialog at the center of the screen
                         let _ = item.deselect(  // Deselect the item in the Tree widget
                             &path,  // Use the file path as the item key
                             true  // Allow the callback to be called again immediately after deselecting
                         );
                     }
-                }
+                };
             }
-        }}
-    }
-    );
+        }
+    })
 }

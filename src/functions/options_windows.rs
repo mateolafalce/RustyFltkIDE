@@ -43,7 +43,6 @@ pub fn options_windows(
         options_windows.clone(),
     );
     btn_delete_folder::btn_delete_folder(
-        app.clone(),
         folders.clone(),
         text_buffer.clone(),
         options_windows.clone(),
