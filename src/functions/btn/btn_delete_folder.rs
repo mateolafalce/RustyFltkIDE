@@ -8,12 +8,9 @@ use fltk::{
         FrameType
     },
     draw::set_cursor,
-    app::App,
     tree::Tree,
     text::TextBuffer,
 };
-use fltk::app::event_x_root;
-use fltk::app::event_y_root;
 #[path="../root/set_folders_roots.rs"]
 mod set_folders_roots;
 #[path="../root/get_folders_roots.rs"]

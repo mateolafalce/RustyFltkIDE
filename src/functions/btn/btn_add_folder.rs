@@ -30,7 +30,7 @@ mod set_folders_roots;
 #[path="../root/get_folders_roots.rs"]
 mod get_folders_roots;
 
-//TODO: MANAGE ROOTS FOLDERS
+//TODO: IMPROVE RENDER_FILE.RS
 
 use std::path::Path;
 
