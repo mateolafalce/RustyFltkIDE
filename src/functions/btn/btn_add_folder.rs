@@ -65,7 +65,9 @@ pub fn btn_add_folder(
                                 is_the_repository_clear
                             );
                             for path in &paths {
-                                folders.add(&path);
+                                if !path.contains("target") {
+                                    folders.add(&path); 
+                                }
                             }
                         }
                         for i in 0..raw_path.len() - 1 {

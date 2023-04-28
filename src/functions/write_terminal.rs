@@ -17,8 +17,8 @@ pub fn write_terminal(// A function that writes a response to a terminal display
     new_buffer.set_text(&terminal_text); // Set the TextBuffer object to the new combined text
     terminal.set_buffer(new_buffer);
     terminal.scroll(
-        terminal.count_lines(1, terminal.buffer().unwrap().length(),true)
-        ,0
+        terminal.count_lines(1, terminal.buffer().unwrap().length(),true),
+        0
     ); // Scroll to the end of the text in the TextDisplay object
     Ok(()) // Return a Result indicating success
 }

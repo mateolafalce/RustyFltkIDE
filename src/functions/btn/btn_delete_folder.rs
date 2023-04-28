@@ -14,10 +14,10 @@ use fltk::{
         event_x_root,
         event_y_root
     },
-    text::{
+    /*text::{
         TextBuffer,
         TextDisplay
-    }
+    }*/
 };
 use std::path::Path;
 
@@ -48,7 +48,7 @@ pub fn btn_delete_folder(
         options_windows.end();
         options_windows.show();
 
-        
+
         let (_paths, is_the_repository_clear): (Vec<String>, bool) = get_folders_roots::get_folders_roots();
         /*if is_the_repository_clear {
             let mut buf: TextBuffer = TextBuffer::default();
