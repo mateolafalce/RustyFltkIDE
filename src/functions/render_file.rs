@@ -7,8 +7,10 @@ use fltk::{
     dialog::alert,
     app::screen_size
 };
-use std::path::Path;
-use std::thread;
+use std::{
+    path::Path,
+    thread
+};
 
 pub fn center() -> (i32, i32) {
     (

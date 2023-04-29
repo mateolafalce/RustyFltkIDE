@@ -1,13 +1,19 @@
 use fltk::{
     prelude::*,
-    valuator::HorNiceSlider,
+    valuator::{
+        HorNiceSlider,
+        NiceSlider
+    },
     tree::Tree,
     text::{
         TextEditor,
         TextDisplay
     },
     input::Input,
-    app::App,
+    app::{
+        App,
+        screen_size
+    },
     draw::set_cursor,
     enums::{
         Cursor,
@@ -20,7 +26,8 @@ pub fn horizontal_slider(
     text_editor: TextEditor,
     terminal_output: TextDisplay,
     terminal_input: Input,
-    app: App
+    app: App,
+    right_slider: NiceSlider
 ) -> HorNiceSlider {
     let mut folders: Tree = folders.clone();
     let mut text_editor: TextEditor = text_editor.clone();
@@ -32,13 +39,14 @@ pub fn horizontal_slider(
     slider.set_maximum(100.);
     slider.set_step(1., 1);
     slider.set_value(20.);
+    let width_size: f64 = screen_size().0;
     slider.set_callback(move |slider_value| {
-        let x1_value: f64 = slider_value.value() * 10.0;
-        let x2_value: f64 = 1000.0 - x1_value - 10.0;
-        folders.resize(0, 20, x1_value as i32, 580);
-        text_editor.resize(x1_value as i32 + 1, 20, x2_value as i32, text_editor.height());
-        terminal_output.resize(x1_value as i32 + 1, terminal_output.y(), x2_value as i32, terminal_output.height());
-        terminal_input.resize(x1_value as i32 + 1, 570, x2_value as i32, 30);
+        let left_width: f64 = width_size * (slider_value.value() / 100.0);
+        let right_width: f64 = width_size - left_width;
+        folders.resize(folders.x(), folders.y(), left_width as i32, folders.height());
+        text_editor.resize(left_width as i32, text_editor.y(), right_width as i32 - right_slider.width() as i32, text_editor.height());
+        terminal_output.resize(left_width as i32, terminal_output.y(), right_width as i32, terminal_output.height());
+        terminal_input.resize(left_width as i32, terminal_input.y(), right_width as i32, terminal_input.height());
         app.redraw();
     });
     slider.handle(move |_, event| {

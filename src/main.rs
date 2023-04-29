@@ -19,6 +19,7 @@ mod vertical_slider;
 use fltk::{
     prelude::*,
     window::Window,
+    valuator::NiceSlider,
     app::{
         App,
         Scheme,
@@ -46,12 +47,18 @@ fn main() {
         terminal_output.clone(),
         terminal_buffer.clone()
     );
+    let right_slider: NiceSlider = vertical_slider::vertical_slider(
+        text_editor.clone(),
+        terminal_output.clone(),
+        app
+    );
     horizontal_slider::horizontal_slider(
         folders.clone(),
         text_editor.clone(),
         terminal_output.clone(),
         terminal_input,
-        app.clone()
+        app.clone(),
+        right_slider
     );
     if prefix.len() > 0 {
         for i in 0..prefix.len() - 1 {
@@ -72,11 +79,6 @@ fn main() {
         }
     }
     save_file(folders.clone());
-    vertical_slider::vertical_slider(
-        text_editor.clone(),
-        terminal_output,
-        app
-    );
     folders.handle(move |folders, event| {
         match event {
             Event::Push => {
