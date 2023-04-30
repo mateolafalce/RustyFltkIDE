@@ -50,6 +50,7 @@ fn main() {
     let right_slider: NiceSlider = vertical_slider::vertical_slider(
         text_editor.clone(),
         terminal_output.clone(),
+        terminal_input.clone(),
         app
     );
     horizontal_slider::horizontal_slider(
