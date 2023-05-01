@@ -16,6 +16,10 @@ use functions::{
 mod horizontal_slider;
 #[path="./functions/sliders/vertical_slider.rs"]
 mod vertical_slider;
+#[path="./functions/root/set_folders_roots.rs"]
+mod set_folders_roots;
+#[path="./functions/btn/render_folder.rs"]
+mod render_folder;
 use fltk::{
     prelude::*,
     window::Window,
@@ -24,7 +28,8 @@ use fltk::{
         App,
         Scheme,
         event_mouse_button,
-        MouseButton
+        MouseButton,
+        event_text
     },
     tree::Tree,
     text::{
@@ -92,6 +97,18 @@ fn main() {
                 }
                 true
             },
+            Event::DndEnter => true,
+            Event::DndDrag => true,
+            Event::DndRelease => true,
+            Event::Paste => {
+                set_folders_roots::set_folders_roots(event_text()).unwrap();
+                render_folder::render_folder(
+                    app.clone(),
+                    folders.clone(),
+                    text_buffer.clone(),
+                );
+                true
+            }
             _ => false,
         }
     });

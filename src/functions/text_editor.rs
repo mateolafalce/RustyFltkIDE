@@ -8,6 +8,7 @@ use fltk::{
         TextEditor,
         TextBuffer,
         Cursor,
+        WrapMode
     }
 };
 
@@ -24,5 +25,6 @@ pub fn text_editor() -> (TextEditor, TextBuffer) {
     text_editor.set_linenumber_fgcolor(Color::from_hex_str("#000000").unwrap()); // Set the color of the line numbers
     text_editor.set_linenumber_bgcolor(Color::from_hex_str("#D3D3D3").unwrap()); // Set the background color of the line numbers
     text_editor.set_cursor_style(Cursor::Simple);
+    text_editor.wrap_mode(WrapMode::AtBounds, 20);
     (text_editor, buffer) // Return the text editor and the text buffer as a tuple
 }

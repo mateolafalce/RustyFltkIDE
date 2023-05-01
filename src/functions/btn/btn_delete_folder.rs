@@ -21,8 +21,6 @@ use fltk::{
 };
 use std::path::Path;
 
-/*#[path="../root/set_folders_roots.rs"]
-mod set_folders_roots;*/
 #[path="../root/get_folders_roots.rs"]
 mod get_folders_roots;
 
@@ -49,7 +47,7 @@ pub fn btn_delete_folder(
         options_windows.show();
 
 
-        let (_paths, is_the_repository_clear): (Vec<String>, bool) = get_folders_roots::get_folders_roots();
+        //let (_paths, is_the_repository_clear): (Vec<String>, bool) = get_folders_roots::get_folders_roots();
         /*if is_the_repository_clear {
             let mut buf: TextBuffer = TextBuffer::default();
             buf.set_text("You don't own any repositories on Rusty");

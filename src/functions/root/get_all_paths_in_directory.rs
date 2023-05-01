@@ -3,6 +3,7 @@ use std::{
     fs::read_dir
 };
 
+#[allow(dead_code)]
 pub fn get_all_paths_in_directory(
     path: &Path,
     prefix: String,

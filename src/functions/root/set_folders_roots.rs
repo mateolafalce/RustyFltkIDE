@@ -13,6 +13,7 @@ use fltk::dialog::alert;
 use crate::functions::center;
 
 // This function sets the root folders for the project.
+#[allow(dead_code)]
 pub fn set_folders_roots(
     root: String
 ) -> Result<(), Error> {
@@ -45,7 +46,7 @@ pub fn set_folders_roots(
     Ok(())
 }
 
-fn find_path(
+pub fn find_path(
     paths: &Vec<String>,
     target_path: &str
 ) -> bool { // This function checks if a given path exists in a vector of paths.

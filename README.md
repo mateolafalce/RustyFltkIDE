@@ -6,6 +6,8 @@
 
 <h2>⚠️Still in development⚠️</h2>
 
+![ide](src/ide.png)
+
   <h1>🪂Rusty IDE🪂</h1>
   <p>A lightweight IDE based on rust</p>
 </div>

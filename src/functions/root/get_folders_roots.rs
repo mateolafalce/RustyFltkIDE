@@ -5,6 +5,7 @@ use std::{
 use fltk::dialog::alert;
 use crate::functions::center;
 
+#[allow(dead_code)]
 pub fn get_folders_roots() -> (
     Vec<String>,
     bool
