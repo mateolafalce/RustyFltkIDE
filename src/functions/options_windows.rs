@@ -13,9 +13,9 @@ use fltk::{
     tree::Tree,
     image::PngImage,
 };
-#[path="./btn/btn_add_folder.rs"]
+#[path="./folders_functions/btn_add_folder.rs"]
 mod btn_add_folder;
-#[path="./btn/btn_delete_folder.rs"]
+#[path="./folders_functions/btn_delete_folder.rs"]
 mod btn_delete_folder;
 
 use std::path::Path;

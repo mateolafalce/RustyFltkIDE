@@ -18,7 +18,7 @@ mod horizontal_slider;
 mod vertical_slider;
 #[path="./functions/root/set_folders_roots.rs"]
 mod set_folders_roots;
-#[path="./functions/btn/render_folder.rs"]
+#[path="./functions/folders_functions/render_folder.rs"]
 mod render_folder;
 use fltk::{
     prelude::*,

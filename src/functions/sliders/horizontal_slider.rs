@@ -50,22 +50,26 @@ pub fn horizontal_slider(
         // Resize the "folders", "text_editor", "terminal_output", and "terminal_input" based on the slider value
         folders.resize(folders.x(), folders.y(), left_width as i32, folders.height());
         text_editor.resize(left_width as i32, text_editor.y(), right_width as i32 - right_slider.width() as i32, text_editor.height());
-        terminal_output.resize(left_width as i32, terminal_output.y(), right_width as i32, terminal_output.height());
-        terminal_input.resize(left_width as i32, terminal_input.y(), right_width as i32, terminal_input.height());
+        terminal_output.resize(left_width as i32, terminal_output.y(), right_width as i32 - right_slider.width(), terminal_output.height());
+        terminal_input.resize(left_width as i32, terminal_input.y(), right_width as i32 - right_slider.width(), terminal_input.height());
         app.redraw(); // Redraw the application
     });
     // Handle the slider events (i.e. push, no event, and leave)
     slider.handle(move |_, event| {
         match event {
+            Event::Enter => { // Set the cursor to "Hand" when the slider is inside
+                set_cursor(Cursor::Hand);
+                true
+            },
+            Event::Leave => { // Set the cursor to "Arrow" when the slider is leaved
+                set_cursor(Cursor::Arrow);
+                true
+            },
             Event::Push => { // Set the cursor to "Move" when the slider is pushed
                 set_cursor(Cursor::Move);
                 true
             },
             Event::NoEvent => { // Set the cursor to "Arrow" when there's no event on the slider
-                set_cursor(Cursor::Arrow);
-                true
-            },
-            Event::Leave => { // Set the cursor to "Arrow" when the mouse leaves the slider
                 set_cursor(Cursor::Arrow);
                 true
             },

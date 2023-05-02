@@ -33,11 +33,10 @@ pub fn vertical_slider(
     vertical_slider.set_callback(move |slider_value| {
         let mut top_height: f64 = (height * (slider_value.value() / 100.0)) - vertical_slider_.width() as f64;
         let mut y_for_terminal_output: i32 = top_height as i32 + terminal_input.height();
-        let mut bottom_height: f64 = height - top_height - terminal_input.height() as f64;
+        let bottom_height: f64 = height - top_height - (terminal_input.height() as f64 * 1.5);
         if top_height <= height * (10.0 / 100.0) {
             top_height = height * (10.0 / 100.0);
-            y_for_terminal_output = top_height as i32 - terminal_input.height();
-            bottom_height = height - top_height - (terminal_input.height() as f64 * 1.5)
+            y_for_terminal_output = top_height as i32 - (terminal_input.height() as f64 * 1.5) as i32;
         }
         text_editor.resize(text_editor.x(),text_editor.y(),text_editor.width(),top_height as i32);
         terminal_output.resize(
@@ -50,15 +49,19 @@ pub fn vertical_slider(
     });
     vertical_slider.handle(move |_, event| {
         match event {
+            Event::Enter => {
+                set_cursor(Cursor::Hand);
+                true
+            },
+            Event::Leave => {
+                set_cursor(Cursor::Arrow);
+                true
+            },
             Event::Push => {
                 set_cursor(Cursor::Move);
                 true
             },
             Event::NoEvent => {
-                set_cursor(Cursor::Arrow);
-                true
-            },
-            Event::Leave => {
                 set_cursor(Cursor::Arrow);
                 true
             },
