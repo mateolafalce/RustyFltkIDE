@@ -14,10 +14,6 @@ use fltk::{
         event_x_root,
         event_y_root
     },
-    /*text::{
-        TextBuffer,
-        TextDisplay
-    }*/
 };
 use std::path::Path;
 

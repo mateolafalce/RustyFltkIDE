@@ -8,7 +8,6 @@ use functions::{
     folders,
     terminal_output,
     terminal_input,
-    render_file,
     save_file,
     options_windows,
 };
@@ -20,6 +19,8 @@ mod vertical_slider;
 mod set_folders_roots;
 #[path="./functions/folders_functions/render_folder.rs"]
 mod render_folder;
+#[path="./functions/folders_functions/render_all_files_in_folders.rs"]
+mod render_all_files_in_folders;
 use fltk::{
     prelude::*,
     window::Window,
@@ -66,24 +67,11 @@ fn main() {
         app.clone(),
         right_slider
     );
-    if prefix.len() > 0 {
-        for i in 0..prefix.len() - 1 {
-            render_file::render_file(
-                folders.clone(),
-                text_buffer.clone(),
-                prefix[i].clone()
-            );
-        }
-    }
-    if prefix.len() == 1 {
-        for i in 0..prefix.len() {
-            render_file::render_file(
-                folders.clone(),
-                text_buffer.clone(),
-                prefix[i].clone()
-            );
-        }
-    }
+    render_all_files_in_folders::render_all_files_in_folders(
+        folders.clone(),
+        text_buffer.clone(),
+        prefix
+    );
     save_file(folders.clone());
     folders.handle(move |folders, event| {
         match event {
