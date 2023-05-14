@@ -8,7 +8,6 @@ use functions::{
     folders,
     terminal_output,
     terminal_input,
-    save_file,
     options_windows,
 };
 #[path="./functions/sliders/horizontal_slider.rs"]
@@ -30,7 +29,8 @@ use fltk::{
         Scheme,
         event_mouse_button,
         MouseButton,
-        event_text
+        event_text,
+        event_key
     },
     tree::Tree,
     text::{
@@ -39,7 +39,10 @@ use fltk::{
         TextBuffer
     },
     input::Input,
-    enums::Event
+    enums::{
+        Event,
+        Key,
+    }
 };
 
 fn main() {
@@ -72,7 +75,6 @@ fn main() {
         text_buffer.clone(),
         prefix
     );
-    save_file(folders.clone());
     folders.handle(move |folders, event| {
         match event {
             Event::Push => {
@@ -84,6 +86,14 @@ fn main() {
                     );
                 }
                 true
+            },
+            Event::KeyDown => {
+                let key = event_key() {
+                if key == Key::ControlL {
+                    println!("Ctrl pressed!");
+                }
+            }
+            true
             },
             Event::DndEnter => true,
             Event::DndDrag => true,
