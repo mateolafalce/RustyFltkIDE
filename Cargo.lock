@@ -49,16 +49,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "cty"
-version = "0.2.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b365fabc795046672053e29c954733ec3b05e4be654ab130fe8f1f94d7051f35"
-
-[[package]]
 name = "fltk"
-version = "1.4.1"
+version = "1.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "80e46e853afdd96fcf53086320813a532e17298b80a7abb94540c75518219eba"
+checksum = "9aaf7cacace3db3d685f447f54b69fdc73c757fac0a00b5d965c4592e01de343"
 dependencies = [
  "bitflags",
  "crossbeam-channel",
@@ -69,12 +63,11 @@ dependencies = [
 
 [[package]]
 name = "fltk-sys"
-version = "1.4.1"
+version = "1.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7292a228e1e0f367389106767940e92461053aa97d44706ff621d9a3cbdb001b"
+checksum = "f4e06030256cc3edd00bfc01f5730a2ec08bf16086be01721d67980f753ac2db"
 dependencies = [
  "cmake",
- "cty",
 ]
 
 [[package]]
@@ -84,7 +77,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9f746c4065a8fa3fe23974dd82f15431cc8d40779821001404d10d2e79ca7d79"
 
 [[package]]
-name = "rusty_flkt_ide"
+name = "rusty_fltk_ide"
 version = "0.1.0"
 dependencies = [
  "fltk",
@@ -92,6 +85,6 @@ dependencies = [
 
 [[package]]
 name = "ttf-parser"
-version = "0.18.1"
+version = "0.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0609f771ad9c6155384897e1df4d948e692667cc0588548b68eb44d052b27633"
+checksum = "44dcf002ae3b32cd25400d6df128c5babec3927cd1eb7ce813cfff20eb6c3746"

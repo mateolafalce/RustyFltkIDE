@@ -1,4 +1,6 @@
 //#![windows_subsystem = "windows"]
+
+//TODO: fix path location when a new user run it
 mod functions;
 mod constants;
 mod commands;
@@ -88,11 +90,9 @@ fn main() {
                 true
             },
             Event::KeyDown => {
-                let key = event_key() {
-                if key == Key::ControlL {
+                if event_key() == Key::ControlL {
                     println!("Ctrl pressed!");
                 }
-            }
             true
             },
             Event::DndEnter => true,
