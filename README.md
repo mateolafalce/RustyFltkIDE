@@ -16,6 +16,22 @@
 
 🪂Rusty is a lightweight and fast IDE developed in Rust, focused on Rust and web3 technology development. With its simple and elegant graphical interface‍, you can enhance productivity in your projects and enjoy a smooth coding experience. Designed with performance in mind, Rusty provides a fast and efficient code editing experience, allowing developers to focus on creating innovative solutions in Rust and web3 technology. If you're looking for an intuitive and user-friendly tool for your Rust programming projects, give Rusty a try today!
 
+---
+<details>
+<summary>Add a project into the IDE</summary>
+
+<br>
+
+<div align="center">
+
+![add_project_button](readme/add_project_button.gif)
+
+<div>
+
+</details>
+
+---
+
 <details>
 <summary>Apache2.0📜</summary>
 
@@ -29,6 +45,8 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <div align="center">
 
-![license](license.png)
+![license](readme/license.png)
+
+<div>
 
 </details>
