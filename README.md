@@ -17,6 +17,7 @@
 🪂Rusty is a lightweight and fast IDE developed in Rust, focused on Rust and web3 technology development. With its simple and elegant graphical interface‍, you can enhance productivity in your projects and enjoy a smooth coding experience. Designed with performance in mind, Rusty provides a fast and efficient code editing experience, allowing developers to focus on creating innovative solutions in Rust and web3 technology. If you're looking for an intuitive and user-friendly tool for your Rust programming projects, give Rusty a try today!
 
 ---
+
 <details>
 <summary>Add a project into the IDE 💼</summary>
 
@@ -41,6 +42,23 @@ Next, the [set_folders_roots](https://github.com/mateolafalce/Rusty-Fltk-IDE/blo
 In case any errors occur during the process, an alert with the corresponding error message is displayed.
 
 Additionally, the button has an event handling mechanism that changes the cursor when the mouse enters or exits the button's area.
+
+</details>
+
+---
+
+<details>
+<summary>Add a project by drag🤏 and drop 🙌</summary>
+
+<br>
+
+<div align="center">
+
+![drag_and_drop](readme/drag_and_drop.gif)
+
+</div>
+
+<br>
 
 </details>
 
