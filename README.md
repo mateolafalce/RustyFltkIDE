@@ -54,9 +54,12 @@ Additionally, the button has an event handling mechanism that changes the cursor
 
 <div align="center">
 
-![drag_and_drop](readme/drag_and_drop.gif)
+![drag_&_drop](readme/drag_&_drop.gif)
 
 </div>
+
+
+
 
 <br>
 
