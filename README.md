@@ -65,6 +65,23 @@ Additionally, the button has an event handling mechanism that changes the cursor
 ---
 
 <details>
+<summary>Run a Rust, Linux or Windows command 👨‍💻</summary>
+
+<br>
+
+<div align="center">
+
+![run_a_command](readme/run_a_command.gif)
+
+</div>
+
+<br>
+
+</details>
+
+---
+
+<details>
 <summary>Apache2.0 📜</summary>
 
 <br>
