@@ -75,6 +75,17 @@ Additionally, the button has an event handling mechanism that changes the cursor
 
 </div>
 
+The [run_a_command()](https://github.com/mateolafalce/Rusty-Fltk-IDE/blob/main/src/functions/run_a_command.rs) function is the main function responsible for executing the commands entered by the user in the integrated terminal. Here's a summary of the processes that occur behind the scenes:
+
+- A command is received as input parameter in string format **input**.
+- A copy of the input command is created without the root directory path prefix **root**.
+- The root directory path is obtained and manipulated to remove the last two characters, which correspond to the current file path.
+- The operating system **OS** is checked to determine if it's "Windows".
+- If the operating system is Windows, the [commands_for_windows()](https://github.com/mateolafalce/Rusty-Fltk-IDE/blob/main/src/functions/specific_commands/commands_for_windows.rs) function is called to process Windows-specific commands. This function performs actions such as directory navigation, directory listing, clearing the screen, etc.
+- The [commands_for_cargo()](https://github.com/mateolafalce/Rusty-Fltk-IDE/blob/main/src/functions/specific_commands/commands_for_cargo.rs) function is called to process cargo-specific commands. This function handles commands related to building, running, and managing cargo projects. The commands are analyzed, and the corresponding function is executed based on the entered command.
+- A successful result **Ok(())** is returned if all processes are executed correctly.
+the run_a_command function takes the input command, removes the root directory path prefix, checks the operating system, and then calls the appropriate functions to process Windows-specific and cargo commands. This allows executing the commands entered by the user in the rusty IDE's integrated terminal.
+
 <br>
 
 </details>
