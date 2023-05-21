@@ -58,8 +58,22 @@ Additionally, the button has an event handling mechanism that changes the cursor
 
 </div>
 
+The [render_folder()](https://github.com/mateolafalce/Rusty-Fltk-IDE/blob/main/src/functions/folders_functions/render_folder.rs) function is responsible for rendering a folder's contents. It takes as input an FLTK App object, a Tree widget representing the folder structure, and a TextBuffer for displaying file contents. The function begins by initializing some variables, including prefix and close_tree, which are used to keep track of the folder structure and determine which folders to close. It retrieves the root paths of the folders from an external module called get_folders_roots.
 
+Next, it iterates over the root paths and performs the following steps for each path:
 
+- Extracts the parent directory of the current path and adds it to the close_tree vector.
+- Appends the parent directory to the prefix vector.
+- Calls the get_all_paths_in_directory function from the get_all_paths_in_directory module, passing the current path, the parent directory, and a boolean indicating whether the repository is clear.
+- Filters out any paths that contain "target".
+- Adds the remaining paths to the folders tree widget.
+- After populating the tree widget, the function closes the folders specified in the close_tree vector. It then checks the length of the prefix vector to determine how many folders to render.
+
+If there is only one prefix, it calls the render_file function from the render_file module once, passing the folders, text_buffer, and the sole prefix. If there are multiple prefixes, it iterates over all but the last prefix and calls render_file for each one, passing the corresponding prefix along with the folders and text_buffer.
+
+Finally, the function triggers a redraw of the FLTK application.
+
+In the main function, the render_folder function is called before the FLTK event loop starts. It is passed the necessary arguments, including the App object, the folders tree widget, and the text_buffer. This ensures that the folder contents are rendered initially when the application is launched. Overall, the render_folder function plays a crucial role in displaying the folder structure and file contents in the FLTK-based application, and it is called during the initialization process in the main function.
 
 <br>
 
