@@ -47,9 +47,9 @@ pub fn btn_add_folder(
             }
         }
     });
-    //Manage the mouse event
+    //Mannage the mouse event
     add_project_folder.handle(move |_, event| {
-        mouse_select(event).unrwarp();
+        mouse_select::mouse_select(event)
     });
     add_project_folder
 }
