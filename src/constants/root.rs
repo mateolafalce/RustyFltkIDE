@@ -1,1 +1,1 @@
-C:\Users\Mateo\Rusty-Fltk-IDE
+C:\Users\Mateo\RustyFltkIDE
