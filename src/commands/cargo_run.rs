@@ -1,6 +1,5 @@
-use crate::functions::{
-    write_terminal,
-};
+#[path="../functions/write_terminal.rs"]
+mod write_terminal;
 use fltk::text::{
     TextDisplay,
     TextBuffer
@@ -22,7 +21,7 @@ pub fn cargo_run(
             .output()
             .expect("Error");
         let result: String = format!("{}", String::from_utf8_lossy(&output.stderr));
-            write_terminal(
+            write_terminal::write_terminal(
                 &(input + "\n" + &result),
                 text.clone(),
                 terminal.clone()

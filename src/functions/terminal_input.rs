@@ -12,23 +12,23 @@ use fltk::{
     input::Input,
     app::event_key
 };
-use crate::{
-    functions::run_a_command,
-    constants::{
-        CONSOLE_TEXT_SIZE,
-        FONT
-    }
-};
+
+#[path="../constants/text_size.rs"]
+mod text_size;
+#[path="../constants/font.rs"]
+mod font;
 #[path="./root/get_root.rs"]
 mod root;
+#[path="./run_a_command.rs"]
+mod run_a_command;
 
 pub fn terminal_input(
     terminal_output: TextDisplay,
     terminal_buffer: TextBuffer,
 ) -> Input {
     let mut terminal_input = Input::new(204, 570, 786, 30, None);
-    terminal_input.set_text_font(FONT);
-    terminal_input.set_text_size(CONSOLE_TEXT_SIZE);
+    terminal_input.set_text_font(font::FONT);
+    terminal_input.set_text_size(text_size::CONSOLE_TEXT_SIZE);
     terminal_input.set_frame(FrameType::FlatBox); // Set the frame type for the input widget
     terminal_input.set_value(&root::root()); // Set the initial value for the input widget to a root directory
     terminal_input.set_readonly(true); // Set the input widget to be readonly by default
@@ -47,11 +47,7 @@ pub fn terminal_input(
             },
             Event::KeyDown => { // Handle the key down event
                 if event_key() == Key::Enter { // Check if the key pressed is the Enter key
-                    run_a_command(
-                        terminal_input.value(),
-                        terminal_buffer.clone(),
-                        _terminal_input.clone()
-                    ).expect("Error"); // Run a command with the input value and the text display widget
+                    run_a_command::run_a_command(terminal_input.value(),terminal_buffer.clone(),terminal_output.clone()).unwrap();
                     terminal_input.set_value(&root::root()); // Set the input widget value back to the root directory
                 }
                 true

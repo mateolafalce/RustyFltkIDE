@@ -8,16 +8,10 @@ use fltk::{
         TextBuffer,
     },
     dialog::alert,
-    app::screen_size
 };
 use std::path::Path;
-
-pub fn center() -> (i32, i32) {
-    (
-        (screen_size().0 / 2.0) as i32,  // Get the horizontal center of the screen
-        (screen_size().1 / 2.0) as i32,  // Get the vertical center of the screen
-    )
-}
+#[path="./event/center.rs"]
+mod center;
 
 pub fn render_file(
     mut folders: Tree,
@@ -36,8 +30,8 @@ pub fn render_file(
                     },
                     Err(e) => {
                         alert( // Display an error message dialog at the center of the screen
-                            center().0 - 100,
-                            center().1 - 100,
+                            center::center().0 - 100,
+                            center::center().1 - 100,
                             &format!("Error: {}", e)
                         );
                         let tree_item: TreeItem = TreeItem::new(&folders_, "Avoid select error");

@@ -1,5 +1,4 @@
 use std::thread;
-use crate::functions::write_terminal;
 use fltk::{
     prelude::*,
     text::{
@@ -7,6 +6,8 @@ use fltk::{
         TextBuffer
     }
 };
+#[path="../functions/write_terminal.rs"]
+mod write_terminal;
 
 pub fn clear(
     text: TextBuffer,
@@ -18,7 +19,7 @@ pub fn clear(
         let mut terminal: TextDisplay = terminal.clone();
         terminal.set_buffer(Some(text.clone()));
         terminal.buffer().unwrap().append("");
-        write_terminal(
+        write_terminal::write_terminal(
             "\n",
             text,
             terminal

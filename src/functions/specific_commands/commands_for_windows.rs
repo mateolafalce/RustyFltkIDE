@@ -10,22 +10,26 @@ use std::{
     },
     io::Read
 };
-use crate::functions::write_terminal;
-use crate::commands::{
-    dir,
-    cd_back,
-    clear,
-    cd_to
-};
+
+#[path="../../commands/dir.rs"]
+mod dir;
+#[path="../../commands/cd_back.rs"]
+mod cd_back;
+#[path="../../commands/clear.rs"]
+mod clear;
+#[path="../../commands/cd_to.rs"]
+mod cd_to;
 #[path="../root/get_root.rs"]
-mod root;
+mod get_root;
+#[path="../write_terminal.rs"]
+mod write_terminal;
 
 pub fn commands_for_windows(
     input: &str,
     text: TextBuffer,
     terminal: TextDisplay,
 ) -> Result<(), std::io::Error> {
-    let root: String = root::root();
+    let root: String = get_root::root();
     let mut file: File = File::open("src/constants/root.rs").expect("Error");
     let mut root_data: String = String::new();
     file.read_to_string(&mut root_data).unwrap();
@@ -46,7 +50,7 @@ pub fn commands_for_windows(
             clear::clear(text, terminal);
         }
         _ => {
-            write_terminal(
+            write_terminal::write_terminal(
                 "\n",
                 text,
                 terminal

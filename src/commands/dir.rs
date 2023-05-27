@@ -1,9 +1,10 @@
 use std::process::Command;
-use crate::functions::write_terminal;
 use fltk::text::{
     TextDisplay,
     TextBuffer
 };
+#[path="../functions/write_terminal.rs"]
+mod write_terminal;
 
 pub fn dir(
     root_data: String,
@@ -17,7 +18,7 @@ pub fn dir(
         .output()
         .expect("Error");
     let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));
-    write_terminal(
+    write_terminal::write_terminal(
         &(root.clone() + " " + &input + "\n" + &result),
         text,
         terminal

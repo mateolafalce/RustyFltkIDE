@@ -5,15 +5,14 @@ use fltk::{
         TextBuffer,
     }
 };
-use crate::functions::{
-    render_file::render_file,
-};
 #[path="../root/get_all_paths_in_directory.rs"]
 mod get_all_paths_in_directory;
 #[path="../root/set_folders_roots.rs"]
 mod set_folders_roots;
 #[path="../root/get_folders_roots.rs"]
 mod get_folders_roots;
+#[path="../render_file.rs"]
+mod render_file;
 use std::path::Path;
 
 pub fn render_folder(
@@ -45,7 +44,7 @@ pub fn render_folder(
     }
     if prefix.len() == 1 {
         for i in 0..prefix.len() {
-            render_file(
+            render_file::render_file(
                 folders.clone(),
                 text_buffer.clone(),
                 prefix[i].clone()
@@ -53,7 +52,7 @@ pub fn render_folder(
         }
     } else if prefix.len() > 1 {
         for i in 0..prefix.len() - 1 {
-            render_file(
+            render_file::render_file(
                 folders.clone(),
                 text_buffer.clone(),
                 prefix[i].clone()

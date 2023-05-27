@@ -1,17 +1,6 @@
 //#![windows_subsystem = "windows"]
 
 //TODO: fix path location when a new user run it
-mod functions;
-mod constants;
-mod commands;
-use functions::{
-    window,
-    text_editor,
-    folders,
-    terminal_output,
-    terminal_input,
-    options_windows,
-};
 #[path="./functions/sliders/horizontal_slider.rs"]
 mod horizontal_slider;
 #[path="./functions/sliders/vertical_slider.rs"]
@@ -22,12 +11,25 @@ mod set_folders_roots;
 mod render_folder;
 #[path="./functions/folders_functions/render_all_files_in_folders.rs"]
 mod render_all_files_in_folders;
+#[path="./functions/options_windows.rs"]
+mod options_windows;
+#[path="./functions/terminal_input.rs"]
+mod terminal_input;
+#[path="./functions/terminal_output.rs"]
+mod terminal_output;
+#[path="./functions/folders.rs"]
+mod folders;
+#[path="./functions/window.rs"]
+mod window;
+#[path="./functions/text_editor.rs"]
+mod text_editor;
+
 use fltk::prelude::*;
 
 fn main() {
     let mut app: fltk::app::App = fltk::app::App::default();
     app.set_scheme(fltk::app::Scheme::Oxy);
-    let mut window: fltk::window::Window = window();
+    let mut window: fltk::window::Window = window::window();
     let (text_editor, text_buffer): (fltk::text::TextEditor, fltk::text::TextBuffer) = text_editor::text_editor();
     let (terminal_output, terminal_buffer): (fltk::text::TextDisplay, fltk::text::TextBuffer) = terminal_output::terminal_output();
     let (mut folders, prefix): (fltk::tree::Tree, Vec<String>) = folders::folders();

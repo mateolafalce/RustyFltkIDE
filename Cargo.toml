@@ -7,4 +7,4 @@ authors = ["Mateo Lafalce <mateo.lafalce04@gmail.com>"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-fltk = "1.4.3"
+fltk = "1.4.4"

@@ -1,7 +1,4 @@
 use fltk::prelude::*;
-use crate::functions::{
-    center
-};
 #[path="../root/get_all_paths_in_directory.rs"]
 mod get_all_paths_in_directory;
 #[path="../root/set_folders_roots.rs"]
@@ -12,6 +9,8 @@ mod get_folders_roots;
 mod render_folder;
 #[path="../event/mouse_select.rs"]
 mod mouse_select;
+#[path="../event/center.rs"]
+mod center;
 
 pub fn btn_add_folder(
     app: fltk::app::App,
@@ -42,7 +41,7 @@ pub fn btn_add_folder(
                 }
                 Err(e) => {
                     options_windows.set_label("Options");
-                    fltk::dialog::alert(center().0 - 100, center().1 - 100, &format!("Error: {}\n", e));
+                    fltk::dialog::alert(center::center().0 - 100, center::center().1 - 100, &format!("Error: {}\n", e));
                 }
             }
         }

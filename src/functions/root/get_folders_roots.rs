@@ -3,7 +3,8 @@ use std::{
     io::Read
 };
 use fltk::dialog::alert;
-use crate::functions::center;
+#[path="../event/center.rs"]
+mod center;
 
 #[allow(dead_code)]
 pub fn get_folders_roots() -> (
@@ -20,7 +21,7 @@ pub fn get_folders_roots() -> (
             }
         },
         Err(e) => {
-            alert(center().0 - 100, center().1 - 100, &format!("Error: {}\n", e));
+            alert(center::center().0 - 100, center::center().1 - 100, &format!("Error: {}\n", e));
         }
     }
     let vector: Vec<String> = contents.as_str().split("\\-").map(|s| s.to_string()).collect();
