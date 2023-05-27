@@ -5,7 +5,6 @@
   ---
 
 <h3>⚠️Still in development⚠️</h3>
-
 <br>
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/mateolafalce/RustyFltkIDE?style=for-the-badge)
