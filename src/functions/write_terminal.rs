@@ -5,8 +5,8 @@ use fltk::{
         TextBuffer
     },
 };
-
-pub fn write_terminal(// A function that writes a response to a terminal display
+// A function that writes a response to a terminal display
+pub fn write_terminal(
     response: &str,
     text: TextBuffer,
     terminal: TextDisplay,
