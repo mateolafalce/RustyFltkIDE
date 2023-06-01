@@ -8,7 +8,7 @@ pub fn cargo_build(
     root: String
 ) {
     std::thread::spawn(move || {
-        let output = std::process::Command::new("cargo")
+        let output: std::process::Output = std::process::Command::new("cargo")
             .args(&["build", "--manifest-path", &((root + "\\Cargo.toml"))])
             .output()
             .expect("Error");

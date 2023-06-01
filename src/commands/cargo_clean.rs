@@ -8,7 +8,7 @@ pub fn cargo_clean(
     root: String
 ){
     std::thread::spawn(move || {
-        let output = std::process::Command::new("cargo")
+        let output: std::process::Output = std::process::Command::new("cargo")
             .args(&["clean", "--manifest-path", &((root + "\\Cargo.toml"))])
             .output()
             .expect("Error");
