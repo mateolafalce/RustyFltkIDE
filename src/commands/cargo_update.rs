@@ -7,7 +7,7 @@ pub fn cargo_update(
     terminal: fltk::text::TextDisplay,
     root: String
 ) {
-    thread::spawn(move || {
+    std::thread::spawn(move || {
         let output: std::process::Output = std::process::Command::new("cargo")
             .args(&["update", "--manifest-path", &((root + "\\Cargo.toml"))])
             .output()
