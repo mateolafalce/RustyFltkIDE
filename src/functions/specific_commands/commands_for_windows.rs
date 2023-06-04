@@ -41,7 +41,7 @@ pub fn commands_for_windows(
     }
     match command_input {
         "dir" => {
-            dir::dir(root_data, input.to_owned(), text, terminal, root.clone());
+            dir::dir(root_data, input.to_owned(), text, terminal);
         }
         "cd .." => {
             cd_back::cd_back(input.to_owned(), text, terminal, root.clone());
