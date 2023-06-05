@@ -7,18 +7,15 @@
 <h3>⚠️Still in development⚠️</h3>
 <br>
 
-![GitHub Repo stars](https://img.shields.io/github/stars/mateolafalce/RustyFltkIDE?style=for-the-badge)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mateolafalce/RustyFltkIDE?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/mateolafalce/RustyFltkIDE?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
 
-![GitHub](https://img.shields.io/github/license/mateolafalce/RustyFltkIDE?style=for-the-badge)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/mateolafalce/RustyFltkIDE?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
 
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/mateolafalce/RustyFltkIDE?style=for-the-badge)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/mateolafalce/RustyFltkIDE?style=for-the-badge)
-
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/mateolafalce/RustyFltkIDE?style=for-the-badge)
-![GitHub watchers](https://img.shields.io/github/watchers/mateolafalce/RustyFltkIDE?style=for-the-badge)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
 
 ---
 
@@ -125,7 +122,7 @@ the run_a_command function takes the input command, removes the root directory p
 ---
 
 <details>
-<summary>Apache2.0 📜</summary>
+<summary>Apache 2.0 📜</summary>
 
 <br>
 
