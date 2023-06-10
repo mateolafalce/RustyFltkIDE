@@ -1,7 +1,7 @@
 #[path="../root/get_all_paths_in_directory.rs"]
 mod get_all_paths_in_directory;
 
-pub fn redner_tree_when_exist(
+pub fn render_tree_when_exist(
     mut folders: fltk::tree::Tree,
     mut close_tree: Vec<String>,
     raw_path: Vec<String>,
