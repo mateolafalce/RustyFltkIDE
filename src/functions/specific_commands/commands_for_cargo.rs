@@ -15,7 +15,7 @@ mod cargo_update;
 #[path="../../commands/cargo_build_release.rs"]
 mod cargo_build_release;
 #[path="../root/get_root.rs"]
-mod root;
+mod get_root;
 
 pub fn commands_for_cargo(
     input: String,
@@ -23,7 +23,7 @@ pub fn commands_for_cargo(
     terminal: fltk::text::TextDisplay,
     command_input: &str
 ){
-    let mut root = root::root();
+    let mut root = get_root::get_root();
     root.pop();
     match command_input {
         "cargo build" => {

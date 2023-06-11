@@ -29,7 +29,7 @@ pub fn commands_for_windows(
     text: TextBuffer,
     terminal: TextDisplay,
 ) -> Result<(), std::io::Error> {
-    let root: String = get_root::root();
+    let root: String = get_root::get_root();
     let mut file: File = File::open("src/constants/root.rs").expect("Error");
     let mut root_data: String = String::new();
     file.read_to_string(&mut root_data).unwrap();

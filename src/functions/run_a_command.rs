@@ -8,7 +8,7 @@ mod commands_for_windows;
 #[path="./specific_commands/commands_for_cargo.rs"]
 mod commands_for_cargo;
 #[path="./root/get_root.rs"]
-mod root;
+mod get_root;
 
 pub fn run_a_command(
     input: String,
@@ -16,8 +16,8 @@ pub fn run_a_command(
     terminal: TextDisplay,
 ) -> Result<(), std::io::Error> {
     let raw_input: String = input.to_string();
-    let command_input: &str = raw_input.trim_start_matches(&root::root());
-    let mut root: String = root::root();
+    let command_input: &str = raw_input.trim_start_matches(&get_root::get_root());
+    let mut root: String = get_root::get_root();
     root.pop();
     root.pop();
     if OS == "windows" {
