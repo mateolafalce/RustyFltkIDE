@@ -11,7 +11,7 @@ pub fn render_folder(
     app: fltk::app::App,
     mut folders: fltk::tree::Tree,
     text_buffer: fltk::text::TextBuffer,
-) {
+) -> bool {
     let mut prefix: Vec<String> = vec![];
     let mut close_tree: Vec<String> = vec![];
     // Get root paths and check if the repository is clear
@@ -60,4 +60,5 @@ pub fn render_folder(
     }
     // Redraw the application
     app.redraw();
+    true
 }

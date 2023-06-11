@@ -70,7 +70,7 @@ Additionally, the button has an event handling mechanism that changes the cursor
 
 </div>
 
-The [render_folder()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/folders_functions/render_folder.rs) function is responsible for rendering a folder's contents. It takes as input an FLTK App object, a Tree widget representing the folder structure, and a TextBuffer for displaying file contents. The function begins by initializing some variables, including prefix and close_tree, which are used to keep track of the folder structure and determine which folders to close. It retrieves the root paths of the folders from an external module called [get_folders_roots()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/root/get_folders_roots.rs).
+The [render_folder()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/folders_functions/render_folder.rs) function is responsible for rendering a folder's contents. It takes as input an FLTK App object, a Tree widget representing the folder structure, and a `TextBuffer` for displaying file contents. The function begins by initializing some variables, including prefix and `close_tree`, which are used to keep track of the folder structure and determine which folders to close. It retrieves the root paths of the folders from an external module called [get_folders_roots()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/root/get_folders_roots.rs).
 
 Next, it iterates over the root paths and performs the following steps for each path:
 
@@ -106,14 +106,14 @@ In the main function, the [text_buffer()](https://github.com/mateolafalce/RustyF
 
 The [run_a_command()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/run_a_command.rs) function is the main function responsible for executing the commands entered by the user in the integrated terminal. Here's a summary of the processes that occur behind the scenes:
 
-- A command is received as input parameter in string format **input**.
-- A copy of the input command is created without the root directory path prefix **root**.
+- A command is received as input parameter in string format `input`.
+- A copy of the input command is created without the root directory path prefix `root`.
 - The root directory path is obtained and manipulated to remove the last two characters, which correspond to the current file path.
-- The operating system **OS** is checked to determine if it's "Windows".
+- The operating system `OS` is checked to determine if it's "Windows".
 - If the operating system is Windows, the [commands_for_windows()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/specific_commands/commands_for_windows.rs) function is called to process Windows-specific commands. This function performs actions such as directory navigation, directory listing, clearing the screen, etc.
 - The [commands_for_cargo()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/specific_commands/commands_for_cargo.rs) function is called to process cargo-specific commands. This function handles commands related to building, running, and managing cargo projects. The commands are analyzed, and the corresponding function is executed based on the entered command.
-- A successful result **Ok(())** is returned if all processes are executed correctly.
-the run_a_command function takes the input command, removes the root directory path prefix, checks the operating system, and then calls the appropriate functions to process Windows-specific and cargo commands. This allows executing the commands entered by the user in the rusty IDE's integrated terminal.
+- A successful result `Ok(())` is returned if all processes are executed correctly.
+the `run_a_command` function takes the input command, removes the root directory path prefix, checks the operating system, and then calls the appropriate functions to process Windows-specific and cargo commands. This allows executing the commands entered by the user in the rusty IDE's integrated terminal.
 
 <br>
 
@@ -126,7 +126,7 @@ the run_a_command function takes the input command, removes the root directory p
 
 <br>
 
-This project is licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. You may obtain a copy of the License at:
+This project is licensed under the `Apache License`, Version 2.0 (the "License"). You may not use this file except in compliance with the License. You may obtain a copy of the License at:
 
 http://www.apache.org/licenses/LICENSE-2.0
 
