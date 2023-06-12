@@ -1,21 +1,22 @@
 <div align="center">
 
-  ![ide](readme/ide.png)
+  ![ide](readme/ide_preview.png)
 
   ---
 
 <h3>⚠️Still in development⚠️</h3>
 <br>
 
-![GitHub Repo stars](https://img.shields.io/github/stars/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
 
-![GitHub](https://img.shields.io/github/license/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
 
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/mateolafalce/RustyFltkIDE?color=blueviolet&style=for-the-badge)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
+
 
 ---
 
@@ -43,7 +44,7 @@
 
 <br>
 
-The Rusty fltk IDE is an integrated development environment specifically designed for the Rust programming language. It utilizes the FLTK library for the graphical interface. It provides a range of features and functionalities to facilitate project development and repository management.
+The Rusty fltk IDE is an integrated development environment specifically designed for the Rust programming language. It utilizes the `FLTK` library for the graphical interface. It provides a range of features and functionalities to facilitate project development and repository management.
 
 The provided code shows a function called [btn_add_folder](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/folders_functions/btn_add_folder.rs) that creates a button in the IDE's interface. Clicking on this button will open a native dialog box to select a folder representing a project or repository.
 
@@ -51,9 +52,7 @@ Once a folder is selected, a series of actions are performed. The selected folde
 
 Next, the [set_folders_roots()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/root/set_folders_roots.rs) function is called to set the root folder paths for the project. If successful, the [render_folder()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/folders_functions/render_folder.rs) function is invoked to render the project's folder structure as a visual tree within the IDE.
 
-In case any errors occur during the process, an alert with the corresponding error message is displayed.
-
-Additionally, the button has an event handling mechanism that changes the cursor when the mouse enters or exits the button's area.
+In case any errors occur during the process, an alert with the corresponding error message is displayed. The button has an event handling mechanism that changes the cursor when the mouse enters or exits the button's area.
 
 </details>
 

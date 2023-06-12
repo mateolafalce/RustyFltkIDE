@@ -5,14 +5,8 @@
 mod horizontal_slider;
 #[path="./functions/sliders/vertical_slider.rs"]
 mod vertical_slider;
-#[path="./functions/root/set_folders_roots.rs"]
-mod set_folders_roots;
-#[path="./functions/folders_functions/render_folder.rs"]
-mod render_folder;
 #[path="./functions/folders_functions/render_all_files_in_folders.rs"]
 mod render_all_files_in_folders;
-#[path="./functions/options_windows.rs"]
-mod options_windows;
 #[path="./functions/terminal_input.rs"]
 mod terminal_input;
 #[path="./functions/terminal_output.rs"]
@@ -23,8 +17,12 @@ mod folders;
 mod window;
 #[path="./functions/text_editor.rs"]
 mod text_editor;
-
+#[path="./functions/event/folders_events.rs"]
+mod folders_events;
+#[path="./functions/event/app_events.rs"]
+mod app_events;
 use fltk::prelude::*;
+use app_events::Message;
 
 fn main() {
     let mut app: fltk::app::App = fltk::app::App::default();
@@ -38,31 +36,13 @@ fn main() {
     horizontal_slider::horizontal_slider(folders.clone(),text_editor.clone(),terminal_output.clone(),terminal_input,app.clone(),right_slider);
     render_all_files_in_folders::render_all_files_in_folders(folders.clone(),text_buffer.clone(),prefix);
     folders.handle(move |folders, event| {
-        match event {
-            fltk::enums::Event::Push => {
-                if fltk::app::event_mouse_button() == fltk::app::MouseButton::Right {
-                    options_windows::options_windows(app.clone(),folders,text_buffer.clone());
-                }
-                true
-            },
-            fltk::enums::Event::KeyDown => {
-                if fltk::app::event_key() == fltk::enums::Key::ControlL {
-                    println!("Ctrl pressed!");
-                }
-            true
-            },
-            fltk::enums::Event::DndEnter => true,
-            fltk::enums::Event::DndDrag => true,
-            fltk::enums::Event::DndRelease => true,
-            fltk::enums::Event::Paste => {
-                set_folders_roots::set_folders_roots(fltk::app::event_text()).unwrap();
-                render_folder::render_folder(app.clone(),folders.clone(),text_buffer.clone());
-                true
-            }
-            _ => false,
-        }
+        folders_events::folders_events(folders, event, app.clone(), text_buffer.clone())
     });
+    let (s, r): (fltk::app::Sender<Message>, fltk::app::Receiver<Message>) = fltk::app::channel::<Message>();
+    let menu: fltk::menu::SysMenuBar = fltk::menu::SysMenuBar::default().with_size(0, 0);
     window.end();
     window.show();
-    app.run().unwrap();
+    while app.wait() {
+        app_events::app_events(menu.clone(), s, r);
+    }
 }

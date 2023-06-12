@@ -27,5 +27,5 @@ pub fn terminal_output() -> (TextDisplay, TextBuffer) {
     terminal.set_text_size(text_size::CONSOLE_TEXT_SIZE);
     terminal.set_scrollbar_size(18);
     terminal.set_frame(FrameType::NoBox); // Set the frame type to no box (no visible border)
-    (terminal, terminal_buffer) // Return a tuple containing the text display widget and text buffer widget
+    (terminal, terminal_buffer) 
 }
