@@ -1,33 +1,23 @@
 <div align="center">
 
-  ![ide](readme/ide_preview.png)
+  ![ide_preview](readme/ide_preview.png)
 
   ---
 
-<h3>⚠️Still in development⚠️</h3>
+  <img src="readme/logo.png" alt="Texto alternativo" width="250px">
+
 <br>
 
-![GitHub Repo stars](https://img.shields.io/github/stars/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
+# 🪂Rusty IDE🪂
 
-![GitHub](https://img.shields.io/github/license/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
+A lightweight IDE based on rust
 
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/mateolafalce/RustyFltkIDE?color=f39c12&style=for-the-badge)
-
-
----
-
-  <h1>🪂Rusty IDE🪂</h1>
-  <p>A lightweight IDE based on rust</p>
 </div>
 
 <br>
 
 
-🪂Rusty is a lightweight and fast IDE developed in Rust, focused on Rust and web3 technology development. With its simple and elegant graphical interface‍, you can enhance productivity in your projects and enjoy a smooth coding experience. Designed with performance in mind, Rusty provides a fast and efficient code editing experience, allowing developers to focus on creating innovative solutions in Rust and web3 technology. If you're looking for an intuitive and user-friendly tool for your Rust programming projects, give Rusty a try today!
+Rusty is a lightweight and fast IDE developed in Rust, focused on Rust and web3 technology development. With its simple and elegant graphical interface‍, you can enhance productivity in your projects and enjoy a smooth coding experience. Designed with performance in mind, Rusty provides a fast and efficient code editing experience, allowing developers to focus on creating innovative solutions in Rust and web3 technology. If you're looking for an intuitive and user-friendly tool for your Rust programming projects, give Rusty a try today!
 
 ---
 
