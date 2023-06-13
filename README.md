@@ -1,6 +1,6 @@
 <div align="center">
 
-  ![ide_preview](readme/ide_preview.png)
+  ![ide_preview](readme/IDE.png)
 
   ---
 
