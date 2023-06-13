@@ -54,7 +54,7 @@ pub fn commands_for_windows(
                 "\n",
                 text,
                 terminal
-            ).expect("Error");
+            );
         }
     }
     Ok(())

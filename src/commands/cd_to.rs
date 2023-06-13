@@ -31,7 +31,7 @@ pub fn cd_to(
                 &(root.clone() + " " + &input + "\n"),
                 text.clone(),
                 terminal.clone()
-            ).unwrap();
+            );
         },
         Err(e) => {
             alert(center::center().0 - 100, center::center().1 - 100, &format!("Error: {}\n", e));

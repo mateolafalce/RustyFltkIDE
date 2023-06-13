@@ -10,7 +10,7 @@ pub fn command_result(
     // Convert the stdout bytes to a string
     let result: String = format!("{}", String::from_utf8_lossy(&output.stdout));
     // Call the write_terminal function from the write_terminal module
-    write_terminal::write_terminal(&(input + "\n" + &result),text.clone(),terminal.clone()).unwrap();
+    write_terminal::write_terminal(&(input + "\n" + &result),text.clone(),terminal.clone());
     // Return true to indicate success
     true
 }

@@ -1,4 +1,4 @@
-use fltk::prelude::DisplayExt;
+use fltk::prelude::*;
 #[path="../functions/write_terminal.rs"]
 mod write_terminal;
 
@@ -12,6 +12,6 @@ pub fn clear(
         let mut terminal: fltk::text::TextDisplay = terminal.clone();
         terminal.set_buffer(Some(text.clone()));
         terminal.buffer().unwrap().append("");
-        write_terminal::write_terminal("\n",text,terminal).expect("Error");
+        write_terminal::write_terminal("\n",text,terminal);
     });
 }

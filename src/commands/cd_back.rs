@@ -30,7 +30,7 @@ pub fn cd_back(
                 &(root.clone() + " " + &input + "\n"),
                 text.clone(),
                 terminal.clone()
-            ).expect("Error");
+            );
         },
         Err(e) => {
             alert(center::center().0 - 100, center::center().1 - 100, &format!("Error: {}\n", e));
