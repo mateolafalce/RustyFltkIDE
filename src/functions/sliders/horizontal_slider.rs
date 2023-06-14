@@ -1,49 +1,29 @@
-use fltk::{
-    prelude::*,
-    valuator::{
-        HorNiceSlider,
-        NiceSlider
-    },
-    tree::Tree,
-    text::{
-        TextEditor,
-        TextDisplay
-    },
-    input::Input,
-    app::{
-        App,
-        screen_size
-    },
-    draw::set_cursor,
-    enums::{
-        Cursor,
-        Event,
-    },
-};
+use fltk::prelude::*;
+#[path="../event/mouse_select.rs"]
+mod mouse_select;
 
-// Define a function named "horizontal_slider"
 pub fn horizontal_slider(
-    folders: Tree,
-    text_editor: TextEditor,
-    terminal_output: TextDisplay,
-    terminal_input: Input,
-    app: App,
-    right_slider: NiceSlider
-) -> HorNiceSlider {
+    folders: fltk::tree::Tree,
+    text_editor: fltk::text::TextEditor,
+    terminal_output: fltk::text::TextDisplay,
+    terminal_input: fltk::input::Input,
+    app: fltk::app::App,
+    right_slider: fltk::valuator::NiceSlider
+) -> fltk::valuator::HorNiceSlider {
     // Clone the input parameters and assign them to mutable variables
-    let mut folders: Tree = folders.clone();
-    let mut text_editor: TextEditor = text_editor.clone();
-    let mut terminal_output: TextDisplay = terminal_output.clone();
-    let mut terminal_input: Input = terminal_input.clone();
-    let app: App = app.clone();
+    let mut folders: fltk::tree::Tree = folders.clone();
+    let mut text_editor: fltk::text::TextEditor = text_editor.clone();
+    let mut terminal_output: fltk::text::TextDisplay = terminal_output.clone();
+    let mut terminal_input: fltk::input::Input = terminal_input.clone();
+    let app: fltk::app::App = app.clone();
     // Create a new horizontal slider with certain settings
-    let mut slider: HorNiceSlider = HorNiceSlider::new(0, 10, 1000, 10, None);
+    let mut slider: fltk::valuator::HorNiceSlider = fltk::valuator::HorNiceSlider::new(0, 10, 1000, 10, None);
     slider.set_minimum(0.);
     slider.set_maximum(100.);
     slider.set_step(1., 1);
     slider.set_value(20.);
     // Get the screen size and calculate the width based on the slider value
-    let width_size: f64 = screen_size().0;
+    let width_size: f64 = fltk::app::screen_size().0;
     slider.set_callback(move |slider_value| {
         let left_width: f64 = width_size * (slider_value.value() / 100.0);
         let right_width: f64 = width_size - left_width;
@@ -56,21 +36,14 @@ pub fn horizontal_slider(
     });
     // Handle the slider events (i.e. push, no event, and leave)
     slider.handle(move |_, event| {
+        mouse_select::mouse_select(event);
         match event {
-            Event::Enter => { // Set the cursor to "Hand" when the slider is inside
-                set_cursor(Cursor::Hand);
+            fltk::enums::Event::Push => { // Set the cursor to "Move" when the slider is pushed
+                fltk::draw::set_cursor(fltk::enums::Cursor::Move);
                 true
             },
-            Event::Leave => { // Set the cursor to "Arrow" when the slider is leaved
-                set_cursor(Cursor::Arrow);
-                true
-            },
-            Event::Push => { // Set the cursor to "Move" when the slider is pushed
-                set_cursor(Cursor::Move);
-                true
-            },
-            Event::NoEvent => { // Set the cursor to "Arrow" when there's no event on the slider
-                set_cursor(Cursor::Arrow);
+            fltk::enums::Event::NoEvent => { // Set the cursor to "Arrow" when there's no event on the slider
+                fltk::draw::set_cursor(fltk::enums::Cursor::Arrow);
                 true
             },
             _ => false,
