@@ -22,46 +22,61 @@ pub fn commands_for_cargo(
     text: fltk::text::TextBuffer,
     terminal: fltk::text::TextDisplay,
     command_input: &str
-){
+) -> bool {
+    // Get the root directory
     let mut root = get_root::get_root();
     root.pop();
+    // Match the command input
     match command_input {
         "cargo build" => {
-            cargo_build::cargo_build(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_build function
+            cargo_build::cargo_build(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo b" => {
-            cargo_build::cargo_build(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_build function
+            cargo_build::cargo_build(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo build --release" => {
-            cargo_build_release::cargo_build_release(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_build_release function
+            cargo_build_release::cargo_build_release(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo run" => {
-            cargo_run::cargo_run(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_run function
+            cargo_run::cargo_run(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo r" => {
-            cargo_run::cargo_run(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_run function
+            cargo_run::cargo_run(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo run --release" => {
-            cargo_run_release::cargo_run_release(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_run_release function
+            cargo_run_release::cargo_run_release(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo clean" => {
-            cargo_clean::cargo_clean(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_clean function
+            cargo_clean::cargo_clean(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo --version" => {
-            cargo_version::cargo_version(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_version function
+            cargo_version::cargo_version(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo -V" => {
-            cargo_version::cargo_version(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_version function
+            cargo_version::cargo_version(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo --help" => {
-            cargo_help::cargo_help(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_help function
+            cargo_help::cargo_help(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo -h" => {
-            cargo_help::cargo_help(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_help function
+            cargo_help::cargo_help(input, text.clone(), terminal.clone(), root.clone());
         },
         "cargo update" => {
-            cargo_update::cargo_update(input,text.clone(),terminal.clone(), root.clone());
+            // Call cargo_update function
+            cargo_update::cargo_update(input, text.clone(), terminal.clone(), root.clone());
         },
         _ => (),
-}
+    }
+    true
 }
