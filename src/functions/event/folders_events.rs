@@ -13,15 +13,17 @@ pub fn folders_events(
 ) -> bool {
     match event {
         fltk::enums::Event::Push => {
+            // Handle right-click event
             if fltk::app::event_mouse_button() == fltk::app::MouseButton::Right {
                 options_windows::options_windows(app.clone(),folders,text_buffer.clone());
             }
             true
         },
-        fltk::enums::Event::DndEnter => true,
-        fltk::enums::Event::DndDrag => true,
-        fltk::enums::Event::DndRelease => true,
+        fltk::enums::Event::DndEnter => true, // Handle drag and drop enter event
+        fltk::enums::Event::DndDrag => true, // Handle drag and drop drag event
+        fltk::enums::Event::DndRelease => true, // Handle drag and drop release event
         fltk::enums::Event::Paste => {
+            // Handle paste event
             set_folders_roots::set_folders_roots(fltk::app::event_text()).unwrap();
             render_folder::render_folder(app.clone(),folders.clone(),text_buffer.clone());
             true
