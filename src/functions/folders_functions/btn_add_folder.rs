@@ -1,4 +1,5 @@
 use fltk::prelude::*;
+
 #[path="../root/get_all_paths_in_directory.rs"]
 mod get_all_paths_in_directory;
 #[path="../root/set_folders_roots.rs"]
@@ -11,6 +12,8 @@ mod render_folder;
 mod mouse_select;
 #[path="../event/center.rs"]
 mod center;
+#[path="../event/error.rs"]
+mod error;
 
 pub fn btn_add_folder(
     app: fltk::app::App,
@@ -33,15 +36,11 @@ pub fn btn_add_folder(
             options_windows.set_label("Loading ...");
             match set_folders_roots::set_folders_roots(folder_input) {
                 Ok(_) => {
-                    render_folder::render_folder(
-                        app.clone(),
-                        folders.clone(),
-                        text_buffer.clone(),
-                    );
+                    render_folder::render_folder(app.clone(), folders.clone(), text_buffer.clone());
                 }
                 Err(e) => {
                     options_windows.set_label("Options");
-                    fltk::dialog::alert(center::center().0 - 100, center::center().1 - 100, &format!("Error: {}\n", e));
+                    error::error(&e.to_string());
                 }
             }
         }
