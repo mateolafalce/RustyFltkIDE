@@ -1,8 +1,3 @@
-use fltk::text::{
-    TextDisplay,
-    TextBuffer
-};
-use std::env::consts::OS;
 #[path="./specific_commands/commands_for_windows.rs"]
 mod commands_for_windows;
 #[path="./specific_commands/commands_for_cargo.rs"]
@@ -12,24 +7,30 @@ mod get_root;
 
 pub fn run_a_command(
     input: String,
-    text: TextBuffer,
-    terminal: TextDisplay,
+    text: fltk::text::TextBuffer,
+    terminal: fltk::text::TextDisplay,
 ) -> Result<(), std::io::Error> {
+    // Convert input to raw string
     let raw_input: String = input.to_string();
+    // Remove the root directory from the command input
     let command_input: &str = raw_input.trim_start_matches(&get_root::get_root());
+    // Get the root directory
     let mut root: String = get_root::get_root();
     root.pop();
     root.pop();
-    if OS == "windows" {
-            commands_for_windows::commands_for_windows(
-                command_input,
-                text.clone(),
-                terminal.clone()
-            ).unwrap();
-        } else {
-            print!("todo");
-            //TODO
-    };
+    // Check the operating system
+    if std::env::consts::OS == "windows" {
+        // Execute Windows-specific commands
+        commands_for_windows::commands_for_windows(
+            command_input,
+            text.clone(),
+            terminal.clone()
+        ).unwrap();
+    } else {
+        // TODO: Implement commands for other operating systems
+        print!("todo");
+    }
+    // Execute Cargo-specific commands
     commands_for_cargo::commands_for_cargo(
         input,
         text.clone(),
