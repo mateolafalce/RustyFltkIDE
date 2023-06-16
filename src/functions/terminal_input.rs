@@ -11,7 +11,7 @@ mod run_a_command;
 pub fn terminal_input(
     terminal_output: fltk::text::TextDisplay,
     terminal_buffer: fltk::text::TextBuffer,
-) -> Input {
+) -> fltk::input::Input {
     let mut terminal_input: fltk::input::Input = fltk::input::Input::new(204, 570, 786, 30, None);
     terminal_input.set_text_font(font::FONT);
     terminal_input.set_text_size(text_size::CONSOLE_TEXT_SIZE);
