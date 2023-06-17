@@ -1,4 +1,6 @@
-pub fn mouse_select(event: fltk::enums::Event) -> bool {
+pub fn mouse_select(
+    event: fltk::enums::Event
+) -> bool {
     match event {
         fltk::enums::Event::Enter => {
             // Set the cursor to a hand when the mouse enters
