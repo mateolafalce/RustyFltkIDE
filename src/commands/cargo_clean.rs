@@ -6,13 +6,12 @@ pub fn cargo_clean(
     text: fltk::text::TextBuffer,
     terminal: fltk::text::TextDisplay,
     root: String
-){
+) {
     std::thread::spawn(move || {
-        let output: std::process::Output = std::process::Command::new("cargo")
-            .args(&["clean", "--manifest-path", &((root + "\\Cargo.toml"))])
+        let output: std::process::Output = std::process::Command::new("cargo")// Create a new cargo command process
+            .args(&["clean", "--manifest-path", &((root + "\\Cargo.toml"))])// Specify the 'clean' command with manifest path
             .output()
             .expect("Error");
-        command_result::command_result(output, input, text, terminal);
-
+        command_result::command_result(output, input, text, terminal);// Process the command result
     });
 }
