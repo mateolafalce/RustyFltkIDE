@@ -1,6 +1,6 @@
 use fltk::prelude::*;
 
-pub fn window() -> Window {
+pub fn window() -> fltk::window::Window {
     let icon: fltk::image::IcoImage = fltk::image::IcoImage::load(&std::path::Path::new("src/rusty.ico")).unwrap();
     let mut window: fltk::window::Window = fltk::window::Window::new(100, 100, 1000, 600, "🪂 Rusty IDE 🪂");
     window.set_icon(Some(icon)); // Set the window's icon to the icon we loaded earlier.

@@ -32,7 +32,7 @@ pub fn terminal_input(
                 true
             },
             fltk::enums::Event::KeyDown => {
-                if event_key() == fltk::enums::Key::Enter { // Check if the key pressed is the Enter key
+                if fltk::app::event_key() == fltk::enums::Key::Enter { // Check if the key pressed is the Enter key
                     run_a_command::run_a_command(terminal_input.value(),terminal_buffer.clone(),terminal_output.clone()).unwrap();
                     terminal_input.set_value(&get_root::get_root()); // Set the input widget value back to the root directory
                 }
