@@ -114,10 +114,14 @@ the `run_a_command` function takes the input command, removes the root directory
 
 <br>
 
-<img src="readme/folders_slider.gif" alt="" width="500px" height="200px"></img>
+<div align="center">
+
+<img src="readme/folders_slider.gif" alt="" width="500px" height="250px"></img>
 
 
-<img src="readme/console_slider.gif" alt="" width="500px" height="200px"></img>
+<img src="readme/console_slider.gif" alt="" width="500px" height="250px"></img>
+
+</div>
 
 This visual development depends of two functions: `horizontal_slider` and `vertical_slider`. Let's explain what happens in each function:
 
