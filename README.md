@@ -111,11 +111,30 @@ the `run_a_command` function takes the input command, removes the root directory
 ---
 
 <details>
-<summary>Move the console or files to your visual liking</summary>
+<summary>Move the console or folders to your visual liking 🖥️</summary>
 
 <br>
 
+This visual development depends of two functions: `horizontal_slider` and `vertical_slider`. Let's explain what happens in each function:
 
+1. `horizontal_slider` function:
+   - It takes several input parameters: `folders`, `text_editor`, `terminal_output`, `terminal_input`, `app`, and `right_slider`.
+   - The function clones the input parameters and assigns them to mutable variables.
+   - It creates a new horizontal slider using the `HorNiceSlider::new` function with specific settings such as minimum, maximum, step, and initial value.
+   - The function retrieves the screen size using `fltk::app::screen_size()` and calculates the width based on the slider value.
+   - It sets a callback for the slider's value change event, where it calculates the left and right widths based on the slider value and resizes the `folders`, `text_editor`, `terminal_output`, and `terminal_input` widgets accordingly.
+   - The function also handles slider events such as push, no event, and leave. When the slider is pushed, it sets the cursor to "Move," and when there's no event, it sets the cursor to "Arrow."
+   - Finally, the function returns the created horizontal slider.
+
+2. `vertical_slider` function:
+   - It takes several input parameters: `text_editor`, `terminal_output`, `terminal_input`, and `app`.
+   - The function creates a new vertical slider using the `NiceSlider::new` function with specific settings such as minimum, maximum, step, and initial value.
+   - It retrieves the screen height using `fltk::app::screen_size().1` and calculates the top and bottom heights based on the slider value.
+   - The function sets a callback for the slider's value change event, where it adjusts the heights of the `text_editor` and `terminal_output` widgets based on the slider value. It also handles the case where the top height goes below a certain threshold and adjusts the values accordingly.
+   - Similar to the `horizontal_slider` function, it handles slider events such as enter, leave, push, and no event, and sets the cursor accordingly.
+   - Finally, the function returns the created vertical slider.
+
+The sliders in these functions allow the user to adjust the position and size of other components (such as folders, text editors, terminal outputs, etc.) based on their preferences. By moving the sliders, the corresponding widgets will be resized and redrawn accordingly, providing a customizable user interface.
 
 <br>
 
