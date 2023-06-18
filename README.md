@@ -4,9 +4,8 @@
 
   ---
 
-  <img src="readme/logo.png" alt="Texto alternativo" width="250px">
+  <img src="readme/logo.png" alt="LogoRustyFltkIDE" width="250px"></img>
 
-<br>
 
 # 🪂Rusty IDE🪂
 
@@ -115,9 +114,15 @@ the `run_a_command` function takes the input command, removes the root directory
 
 <br>
 
+<img src="readme/folders_slider.gif" alt="" width="500px" height="200px"></img>
+
+
+<img src="readme/console_slider.gif" alt="" width="500px" height="200px"></img>
+
 This visual development depends of two functions: `horizontal_slider` and `vertical_slider`. Let's explain what happens in each function:
 
-1. `horizontal_slider` function:
+`horizontal_slider` function:
+
    - It takes several input parameters: `folders`, `text_editor`, `terminal_output`, `terminal_input`, `app`, and `right_slider`.
    - The function clones the input parameters and assigns them to mutable variables.
    - It creates a new horizontal slider using the `HorNiceSlider::new` function with specific settings such as minimum, maximum, step, and initial value.
@@ -126,7 +131,10 @@ This visual development depends of two functions: `horizontal_slider` and `verti
    - The function also handles slider events such as push, no event, and leave. When the slider is pushed, it sets the cursor to "Move," and when there's no event, it sets the cursor to "Arrow."
    - Finally, the function returns the created horizontal slider.
 
-2. `vertical_slider` function:
+<br>
+
+`vertical_slider` function:
+
    - It takes several input parameters: `text_editor`, `terminal_output`, `terminal_input`, and `app`.
    - The function creates a new vertical slider using the `NiceSlider::new` function with specific settings such as minimum, maximum, step, and initial value.
    - It retrieves the screen height using `fltk::app::screen_size().1` and calculates the top and bottom heights based on the slider value.
