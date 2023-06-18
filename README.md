@@ -111,6 +111,19 @@ the `run_a_command` function takes the input command, removes the root directory
 ---
 
 <details>
+<summary>Move the console or files to your visual liking</summary>
+
+<br>
+
+
+
+<br>
+
+</details>
+
+---
+
+<details>
 <summary>Apache 2.0 📜</summary>
 
 <br>
