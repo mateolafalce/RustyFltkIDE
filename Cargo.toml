@@ -1,10 +1,10 @@
 [package]
 name = "rusty_fltk_ide"
-version = "0.1.0"
-edition = "2021"
+version = "0.1.39"
+edition = "2023"
 authors = ["Mateo Lafalce <mateo.lafalce04@gmail.com>"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-fltk = "1.4.4"
+fltk = "1.4.5"
