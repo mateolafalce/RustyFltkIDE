@@ -1,6 +1,6 @@
 use fltk::prelude::*;
-#[path="../constants/text_size.rs"]
-mod text_size;
+#[path="../constants/console_text_size.rs"]
+mod console_text_size;
 #[path="../constants/font.rs"]
 mod font;
 #[path="./root/get_root.rs"]
@@ -14,7 +14,7 @@ pub fn terminal_input(
 ) -> fltk::input::Input {
     let mut terminal_input: fltk::input::Input = fltk::input::Input::new(204, 570, 786, 30, None);
     terminal_input.set_text_font(font::FONT);
-    terminal_input.set_text_size(text_size::CONSOLE_TEXT_SIZE);
+    terminal_input.set_text_size(console_text_size::CONSOLE_TEXT_SIZE);
     terminal_input.set_frame(fltk::enums::FrameType::FlatBox);
     terminal_input.set_value(&get_root::get_root()); // Set the initial value for the input widget to a root directory
     terminal_input.set_readonly(true); // Set the input widget to be readonly by default
