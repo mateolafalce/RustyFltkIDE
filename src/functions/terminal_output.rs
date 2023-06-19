@@ -3,6 +3,8 @@ use fltk::prelude::*;
 mod console_text_size;
 #[path="../constants/font.rs"]
 mod font;
+#[path="../constants/scrollbar_size.rs"]
+mod scrollbar_size;
 
 pub fn terminal_output() -> (fltk::text::TextDisplay, fltk::text::TextBuffer) {
     let terminal_buffer: fltk::text::TextBuffer = fltk::text::TextBuffer::default();
@@ -15,7 +17,7 @@ pub fn terminal_output() -> (fltk::text::TextDisplay, fltk::text::TextBuffer) {
     ); // Set the scrollbar alignment to bottom-right
     terminal.set_text_font(font::FONT);
     terminal.set_text_size(console_text_size::CONSOLE_TEXT_SIZE);
-    terminal.set_scrollbar_size(18);
+    terminal.set_scrollbar_size(scrollbar_size::SCROLLBAR_SIZE);
     terminal.set_frame(fltk::enums::FrameType::NoBox); // Set the frame type to no box (no visible border)
     (terminal, terminal_buffer)
 }

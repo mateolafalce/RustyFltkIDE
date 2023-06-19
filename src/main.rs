@@ -22,7 +22,6 @@ mod folders_events;
 #[path="./functions/event/app_events.rs"]
 mod app_events;
 use fltk::prelude::*;
-use app_events::Message;
 
 fn main() {
     let mut app: fltk::app::App = fltk::app::App::default();
@@ -38,11 +37,11 @@ fn main() {
     folders.handle(move |folders, event| {
         folders_events::folders_events(folders, event, app.clone(), text_buffer.clone())
     });
-    let (s, r): (fltk::app::Sender<Message>, fltk::app::Receiver<Message>) = fltk::app::channel::<Message>();
+    let (sender, receiver): (fltk::app::Sender<app_events::Message>, fltk::app::Receiver<app_events::Message>) = fltk::app::channel::<app_events::Message>();
     let menu: fltk::menu::SysMenuBar = fltk::menu::SysMenuBar::default().with_size(0, 0);
     window.end();
     window.show();
     while app.wait() {
-        app_events::app_events(menu.clone(), s, r);
+        app_events::app_events(menu.clone(), sender, receiver);
     }
 }
