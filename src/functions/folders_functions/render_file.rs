@@ -14,9 +14,7 @@ pub fn render_file(
                 let path: String = prefix.clone() + "/"+ &item.item_pathname(&i).unwrap();  // Build the file path for the selected item
                 let file_path: &std::path::Path = std::path::Path::new(&path);
                 match text_buffer.load_file(file_path) {  // Load the file into the TextBuffer widget
-                    Ok(_) => {
-                        () // If loading the file was successful, do nothing
-                    },
+                    Ok(_) => (), // If loading the file was successful, do nothing
                     Err(e) => {
                         error::error(&e.to_string()); //Return error
                         let tree_item: fltk::tree::TreeItem = fltk::tree::TreeItem::new(&folders_, "Avoid select error");

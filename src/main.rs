@@ -35,7 +35,7 @@ fn main() {
     horizontal_slider::horizontal_slider(folders.clone(),text_editor.clone(),terminal_output.clone(),terminal_input,app.clone(),right_slider);
     render_all_files_in_folders::render_all_files_in_folders(folders.clone(),text_buffer.clone(),prefix);
     folders.handle(move |folders, event| {
-        folders_events::folders_events(folders, event, app.clone(), text_buffer.clone())
+        folders_events::folders_events(folders, event, app.clone(), text_buffer.clone(), text_editor.clone())
     });
     let (sender, receiver): (fltk::app::Sender<app_events::Message>, fltk::app::Receiver<app_events::Message>) = fltk::app::channel::<app_events::Message>();
     let menu: fltk::menu::SysMenuBar = fltk::menu::SysMenuBar::default().with_size(0, 0);
