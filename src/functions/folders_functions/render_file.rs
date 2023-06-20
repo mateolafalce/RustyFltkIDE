@@ -1,5 +1,5 @@
 use fltk::prelude::*;
-#[path="./event/error.rs"]
+#[path="../event/error.rs"]
 mod error;
 
 pub fn render_file(
@@ -18,9 +18,9 @@ pub fn render_file(
                         () // If loading the file was successful, do nothing
                     },
                     Err(e) => {
-                        error::error(&e.to_string());
+                        error::error(&e.to_string()); //Return error
                         let tree_item: fltk::tree::TreeItem = fltk::tree::TreeItem::new(&folders_, "Avoid select error");
-                        let _ = item.select_only(
+                        let _ = item.select_only(//Deselect item
                             &tree_item,
                             true
                         );

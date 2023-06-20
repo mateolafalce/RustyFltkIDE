@@ -1,4 +1,4 @@
-#[path="../render_file.rs"]
+#[path="./render_file.rs"]
 mod render_file;
 
 pub fn render_all_files_in_folders(

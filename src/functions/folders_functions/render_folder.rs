@@ -4,7 +4,7 @@ mod get_all_paths_in_directory;
 mod set_folders_roots;
 #[path="../root/get_folders_roots.rs"]
 mod get_folders_roots;
-#[path="../render_file.rs"]
+#[path="./render_file.rs"]
 mod render_file;
 
 pub fn render_folder(
