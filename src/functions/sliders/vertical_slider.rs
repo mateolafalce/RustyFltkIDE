@@ -1,35 +1,22 @@
-use fltk::{
-    prelude::*,
-    app::{
-        App,
-        screen_size
-    },
-    text::{
-        TextEditor,
-        TextDisplay,
-    },
-    valuator::NiceSlider,
-    input::Input,
-    enums::{
-        Cursor,
-        Event,
-    },
-    draw::set_cursor,
-};
+use fltk::prelude::*;
+#[path="../event/mouse_select.rs"]
+mod mouse_select;
+#[path="../event/slider_move.rs"]
+mod slider_move;
 
 pub fn vertical_slider(
-    mut text_editor: TextEditor,
-    mut terminal_output: TextDisplay,
-    terminal_input: Input,
-    app: App
-) -> NiceSlider {
-    let mut vertical_slider: NiceSlider = NiceSlider::new(990, 20, 10, 580, None);
+    mut text_editor: fltk::text::TextEditor,
+    mut terminal_output: fltk::text::TextDisplay,
+    terminal_input: fltk::input::Input,
+    app: fltk::app::App
+) -> fltk::valuator::NiceSlider {
+    let mut vertical_slider: fltk::valuator::NiceSlider = fltk::valuator::NiceSlider::new(990, 20, 10, 580, None);
     vertical_slider.set_minimum(0.);
     vertical_slider.set_maximum(100.);
     vertical_slider.set_step(1., 1);
     vertical_slider.set_value(66.);
-    let height: f64 = screen_size().1;
-    let vertical_slider_: NiceSlider = vertical_slider.clone();
+    let height: f64 = fltk::app::screen_size().1;
+    let vertical_slider_: fltk::valuator::NiceSlider = vertical_slider.clone();
     vertical_slider.set_callback(move |slider_value| {
         let mut top_height: f64 = (height * (slider_value.value() / 100.0)) - vertical_slider_.width() as f64;
         let mut y_for_terminal_output: i32 = top_height as i32 + terminal_input.height();
@@ -48,25 +35,9 @@ pub fn vertical_slider(
         app.redraw();
     });
     vertical_slider.handle(move |_, event| {
-        match event {
-            Event::Enter => {
-                set_cursor(Cursor::Hand);
-                true
-            },
-            Event::Leave => {
-                set_cursor(Cursor::Arrow);
-                true
-            },
-            Event::Push => {
-                set_cursor(Cursor::Move);
-                true
-            },
-            Event::NoEvent => {
-                set_cursor(Cursor::Arrow);
-                true
-            },
-            _ => false,
-        }
+        mouse_select::mouse_select(event);
+        slider_move::slider_move(event);
+        false
     });
     vertical_slider
 }

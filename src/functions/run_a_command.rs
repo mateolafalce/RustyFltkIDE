@@ -10,11 +10,8 @@ pub fn run_a_command(
     text: fltk::text::TextBuffer,
     terminal: fltk::text::TextDisplay,
 ) -> Result<(), std::io::Error> {
-    // Convert input to raw string
     let raw_input: String = input.to_string();
-    // Remove the root directory from the command input
     let command_input: &str = raw_input.trim_start_matches(&get_root::get_root());
-    // Get the root directory
     let mut root: String = get_root::get_root();
     root.pop();
     root.pop();

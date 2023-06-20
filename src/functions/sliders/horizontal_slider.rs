@@ -1,6 +1,8 @@
 use fltk::prelude::*;
 #[path="../event/mouse_select.rs"]
 mod mouse_select;
+#[path="../event/slider_move.rs"]
+mod slider_move;
 
 pub fn horizontal_slider(
     folders: fltk::tree::Tree,
@@ -37,17 +39,8 @@ pub fn horizontal_slider(
     // Handle the slider events (i.e. push, no event, and leave)
     slider.handle(move |_, event| {
         mouse_select::mouse_select(event);
-        match event {
-            fltk::enums::Event::Push => { // Set the cursor to "Move" when the slider is pushed
-                fltk::draw::set_cursor(fltk::enums::Cursor::Move);
-                true
-            },
-            fltk::enums::Event::NoEvent => { // Set the cursor to "Arrow" when there's no event on the slider
-                fltk::draw::set_cursor(fltk::enums::Cursor::Arrow);
-                true
-            },
-            _ => false,
-        }
+        slider_move::slider_move(event);
+        false
     });
     slider // Return the horizontal slider
 }
