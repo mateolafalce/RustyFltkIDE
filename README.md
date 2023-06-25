@@ -65,7 +65,7 @@ Next, it iterates over the root paths and performs the following steps for each 
 - Extracts the parent directory of the current path and adds it to the close_tree vector.
 - Appends the parent directory to the prefix vector.
 - Calls the [get_all_paths_in_directory()](https://github.com/mateolafalce/RustyFltkIDE/blob/main/src/functions/root/get_all_paths_in_directory.rs) function from the get_all_paths_in_directory module, passing the current path, the parent directory, and a boolean indicating whether the repository is clear.
-- Filters out any paths that contain "target".
+- Filters out any paths that contain target.
 - Adds the remaining paths to the folders tree widget.
 - After populating the tree widget, the function closes the folders specified in the close_tree vector. It then checks the length of the prefix vector to determine how many folders to render.
 
