@@ -13,20 +13,17 @@ pub fn folders_events(
     mut text_buffer: fltk::text::TextBuffer,
     mut text_editor: fltk::text::TextEditor
 ) -> bool {
-    //let mut item: fltk::tree::TreeItem = fltk::tree::TreeItem::new(&folders, "Show in scrren the file");
     match event {
         fltk::enums::Event::Push => {
-            // Handle right-click event
+            // Handle click
             if fltk::app::event_mouse_button() == fltk::app::MouseButton::Right {
                 options_windows::options_windows(app.clone(),folders,text_buffer.clone());
-            } else if fltk::app::event_mouse_button() == fltk::app::MouseButton::Left {
+            } else {
                 match folders.get_selected_items() {
                     None => (),
                     Some(vals) => {
                         let path = vals.iter().map(|i| folders.item_pathname(i).unwrap() + "\n").collect::<String>();
-                        //println!("{}")
-                        //get path then draw
-                        text_buffer.set_text("Set content");
+                        text_buffer.set_text(&foo);
                         text_editor.set_buffer(Some(text_buffer.clone()));
                     }
                 }
