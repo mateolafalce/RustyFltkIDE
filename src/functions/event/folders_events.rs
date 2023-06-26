@@ -19,13 +19,12 @@ pub fn folders_events(
             if fltk::app::event_mouse_button() == fltk::app::MouseButton::Right {
                 options_windows::options_windows(app.clone(),folders,text_buffer.clone());
             } else {
-                match folders.get_selected_items() {
-                    None => (),
-                    Some(vals) => {
-                        let path = vals.iter().map(|i| folders.item_pathname(i).unwrap() + "\n").collect::<String>();
-                        text_buffer.set_text(&foo);
+                match folders.get_item_focus() {
+                    Some(val) => {
+                        text_buffer.set_text(&val.label().unwrap());
                         text_editor.set_buffer(Some(text_buffer.clone()));
-                    }
+                    },
+                    None => (),
                 }
             };
             true
