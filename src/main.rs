@@ -1,5 +1,4 @@
 // #![windows_subsystem = "windows"]
-
 // TODO: Fix path location when a new user runs it
 
 #[path = "./functions/sliders/horizontal_slider.rs"]
