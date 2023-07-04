@@ -1,10 +1,6 @@
 use std::io::Read;
-
-// Importing the error module from the specified path
 #[path="../event/error.rs"]
 mod error;
-
-// Importing the center module from the specified path
 #[path="../event/center.rs"]
 mod center;
 
