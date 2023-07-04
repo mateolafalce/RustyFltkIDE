@@ -1,8 +1,6 @@
-use std::{
-    fs::File,
-    io::Read
-};
-use fltk::dialog::alert;
+use std::io::Read;
+#[path="../event/error.rs"]
+mod error;
 #[path="../event/center.rs"]
 mod center;
 
@@ -11,7 +9,7 @@ pub fn get_folders_roots() -> (
     Vec<String>,
     bool
 ) {
-    let mut file: File = File::open("src/constants/folders_roots.rs").unwrap();
+    let mut file: std::fs::File = std::fs::File::open("src/constants/folders_roots.rs").unwrap();
     let mut contents: String = String::new();
     let mut is_the_repository_clear: bool = true;
     match file.read_to_string(&mut contents) {
@@ -21,7 +19,7 @@ pub fn get_folders_roots() -> (
             }
         },
         Err(e) => {
-            alert(center::center().0 - 100, center::center().1 - 100, &format!("Error: {}\n", e));
+            error::error(&e.to_string());
         }
     }
     let vector: Vec<String> = contents.as_str().split("\\-").map(|s| s.to_string()).collect();
