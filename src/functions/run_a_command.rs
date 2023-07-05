@@ -15,9 +15,8 @@ pub fn run_a_command(
     let mut root: String = get_root::get_root();
     root.pop();
     root.pop();
-    // Check the operating system
+    // Check the operating system, then execute Windows-specific commands
     if std::env::consts::OS == "windows" {
-        // Execute Windows-specific commands
         commands_for_windows::commands_for_windows(
             command_input,
             text.clone(),
