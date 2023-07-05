@@ -19,7 +19,12 @@ pub fn terminal_input(
     terminal_input.set_value(&get_root::get_root()); // Set the initial value for the input widget to a root directory
     terminal_input.set_readonly(true); // Set the input widget to be readonly by default
     terminal_input.handle(move |terminal_input, event| {
-        terminal_input_event::terminal_input_event(event, terminal_input,terminal_output.clone(),terminal_buffer.clone())
+        terminal_input_event::terminal_input_event(
+            event,
+            terminal_input,
+            terminal_output.clone(),
+            terminal_buffer.clone()
+        )
     });
     terminal_input // Return the input widget
 }
