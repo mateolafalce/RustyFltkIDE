@@ -11,7 +11,13 @@ pub fn options_windows(
 ) -> fltk::window::Window {
     // Load icon
     let icon: fltk::image::PngImage = fltk::image::PngImage::load(&std::path::Path::new("src/options.png")).unwrap();
-    let mut options_windows: fltk::window::Window = fltk::window::Window::new(fltk::app::event_x_root(),fltk::app::event_y_root(),300,200,"Options");
+    let mut options_windows: fltk::window::Window = fltk::window::Window::new(
+        fltk::app::event_x_root(),
+        fltk::app::event_y_root(),
+        300,
+        200,
+        "Options"
+    );
     //Style
     options_windows.set_icon(Some(icon));
     options_windows.set_border(true);
