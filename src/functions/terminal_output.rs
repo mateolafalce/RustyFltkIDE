@@ -9,7 +9,10 @@ mod scrollbar_size;
 pub fn terminal_output() -> (fltk::text::TextDisplay, fltk::text::TextBuffer) {
     let terminal_buffer: fltk::text::TextBuffer = fltk::text::TextBuffer::default();
     let mut terminal: fltk::text::TextDisplay = fltk::text::TextDisplay::new(200, 400, 790, 170, None);
-    let terminal_text: String = format!("Operating system: {}\n🦀 Rusty IDE console 💻\n\n", std::env::consts::OS);
+    let terminal_text: String = format!(
+        "Operating system: {}\n🦀 Rusty IDE console 💻\n\n",
+        std::env::consts::OS
+    );
     terminal.set_buffer(Some(terminal_buffer.clone())); // Set the text buffer for the text display widget
     terminal.buffer().unwrap().append(&terminal_text); // Add the welcome message to the text buffer
     terminal.set_text_font(font::FONT);
