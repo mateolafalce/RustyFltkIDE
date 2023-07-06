@@ -18,7 +18,7 @@ pub fn render_file(
                     Err(e) => {
                         error::error(&e.to_string()); //Return error
                         let tree_item: fltk::tree::TreeItem = fltk::tree::TreeItem::new(&folders_, "Avoid select error");
-                        let _ = item.select_only(//Deselect item
+                        let _ = item.select_only( //Deselect item
                             &tree_item,
                             true
                         );
