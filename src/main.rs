@@ -70,7 +70,6 @@ fn main() {
     // Create a channel for sending and receiving application events
     let (sender, receiver): (fltk::app::Sender<app_events::Message>, fltk::app::Receiver<app_events::Message>) =
         fltk::app::channel::<app_events::Message>();
-    // Create the system menu bar
     let menu: fltk::menu::SysMenuBar = fltk::menu::SysMenuBar::default().with_size(0, 0);
     window.end();
     window.show();
