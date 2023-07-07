@@ -1,13 +1,7 @@
-use std::{
-    fs::File,
-    io::{
-        Error,
-        Write
-    }
-};
+use std::io::Write;
 
-pub fn set_root(root: String) -> Result<(), Error> {
-    let mut file: File = File::create("src/constants/root.rs")?;
+pub fn set_root(root: String) -> Result<(), std::io::Error> {
+    let mut file: std::fs::File = std::fs::File::create("src/constants/root.rs")?;
     file.write_all(root.as_bytes())?;
     Ok(())
 }
