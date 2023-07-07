@@ -24,22 +24,18 @@ mod app_events;
 use fltk::prelude::*;
 
 fn main() {
+    // Declare app
     let mut app: fltk::app::App = fltk::app::App::default();
     app.set_scheme(fltk::app::Scheme::Oxy);
-    // Create the main window
+    // Declare all fltk-elemnts
     let mut window: fltk::window::Window = window::window();
-    // Create the text editor and its associated text buffer
     let (text_editor, text_buffer): (fltk::text::TextEditor, fltk::text::TextBuffer) =
         text_editor::text_editor();
-    // Create the terminal output display and its associated text buffer
     let (terminal_output, terminal_buffer): (fltk::text::TextDisplay, fltk::text::TextBuffer) =
         terminal_output::terminal_output();
-    // Create the folders tree and a prefix vector
     let (mut folders, prefix): (fltk::tree::Tree, Vec<String>) = folders::folders();
-    // Create the terminal input field
     let terminal_input: fltk::input::Input =
         terminal_input::terminal_input(terminal_output.clone(), terminal_buffer.clone());
-    // Create the right slider
     let right_slider: fltk::valuator::NiceSlider =
         vertical_slider::vertical_slider(text_editor.clone(), terminal_output.clone(), terminal_input.clone(), app);
     // Set up the horizontal slider
