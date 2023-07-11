@@ -5,6 +5,8 @@ mod options_windows;
 mod set_folders_roots;
 #[path="../folders_functions/render_folder.rs"]
 mod render_folder;
+#[path="../root/get_root.rs"]
+mod get_root;
 
 pub fn folders_events(
     folders: &mut fltk::tree::Tree,
@@ -21,7 +23,7 @@ pub fn folders_events(
             } else {
                 match folders.get_item_focus() {
                     Some(val) => {
-                        println!("{}", &val.label().unwrap());
+                        println!("{}", get_root::get_root() + &val.label().unwrap());
                         text_buffer.set_text(&val.label().unwrap());
                         text_editor.set_buffer(Some(text_buffer.clone()));
                     },
