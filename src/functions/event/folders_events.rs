@@ -21,6 +21,7 @@ pub fn folders_events(
             } else {
                 match folders.get_item_focus() {
                     Some(val) => {
+                        println!("{}", &val.label().unwrap());
                         text_buffer.set_text(&val.label().unwrap());
                         text_editor.set_buffer(Some(text_buffer.clone()));
                     },
